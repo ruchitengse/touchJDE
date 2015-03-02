@@ -1,11 +1,12 @@
+<!-- References: http://code.tutsplus.com/tutorials/creating-a-keyboard-with-css-and-jquery--net-5774 -->
 * {
 	margin: 0;
 	padding: 0;
 }
 
 body {
-	font: 71%/1.5 Verdana, Sans-Serif;
-	background: #eee;
+	font: 75%/1.5 Verdana, Sans-Serif;
+	background: black;
 }
 
 #container {
@@ -42,6 +43,7 @@ body {
 	border: 1px solid #f9f9f9;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
+	overflow: hidden;
 }
 
 .capslock, .tab, .left-shift {
@@ -109,6 +111,21 @@ body {
 	display: none;
 }
 
+.accMod {
+	display: none;
+}
+
+.metCreate {
+	display: none;
+}
+
+.retType {
+	display: none;
+}
+
+.metEnd {
+	display: none;
+}
 
 #keyboard li:hover {
 	position: relative;
@@ -116,4 +133,10 @@ body {
 	left: 1px;
 	border-color: #e5e5e5;
 	cursor: pointer;
+}
+
+#loopsKeypad {
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }

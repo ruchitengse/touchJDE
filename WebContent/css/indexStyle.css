@@ -7,6 +7,27 @@ html {
 body, area {
 	font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
 	height: 100%;
+	margin-bottom: 30px;
+	background: rgba(212, 228, 239, 1);
+	background: -moz-linear-gradient(left, rgba(212, 228, 239, 1) 0%,
+		rgba(228, 235, 240, 1) 19%, rgba(208, 230, 245, 1) 35%,
+		rgba(134, 174, 204, 1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(212, 228, 239,
+		1)), color-stop(19%, rgba(228, 235, 240, 1)),
+		color-stop(35%, rgba(208, 230, 245, 1)),
+		color-stop(100%, rgba(134, 174, 204, 1)));
+	background: -webkit-linear-gradient(left, rgba(212, 228, 239, 1) 0%,
+		rgba(228, 235, 240, 1) 19%, rgba(208, 230, 245, 1) 35%,
+		rgba(134, 174, 204, 1) 100%);
+	background: -o-linear-gradient(left, rgba(212, 228, 239, 1) 0%,
+		rgba(228, 235, 240, 1) 19%, rgba(208, 230, 245, 1) 35%,
+		rgba(134, 174, 204, 1) 100%);
+	background: -ms-linear-gradient(left, rgba(212, 228, 239, 1) 0%,
+		rgba(228, 235, 240, 1) 19%, rgba(208, 230, 245, 1) 35%,
+		rgba(134, 174, 204, 1) 100%);
+	background: linear-gradient(to right, rgba(212, 228, 239, 1) 0%,
+		rgba(228, 235, 240, 1) 19%, rgba(208, 230, 245, 1) 35%,
+		rgba(134, 174, 204, 1) 100%);
 }
 
 .btn {
@@ -36,21 +57,22 @@ body, area {
 }
 
 #header {
-	font-size: large;
-	color: #5C9CF7;
-	position: absolute;
-	right: 0;
-	top: 0;
-	margin: auto;
-	height: 30px;
-}
-
-#body {
+	font-size: x-large;
+	color: #207ce5;
 	height: 30px;
 }
 
 #content {
 	height: auto;
+}
+
+#footer {
+	height: 15px;
+	position: absolute;
+	bottom: 0;
+	font-size: small;
+	text-align: center;
+	display: block;
 }
 
 .modalDialog {
@@ -67,4 +89,8 @@ body, area {
 	-moz-transition: opacity 400ms ease-in;
 	transition: opacity 400ms ease-in;
 	pointer-events: none;
+}
+
+a {
+	text-decoration: none;
 }

@@ -16,11 +16,36 @@ $(function() {
 	});
 	$('.varstore').click(function() {
 		$('.varstore').show();
+		/*$.session.get("sessVar");*/
 	});
 	$('.methdecl').click(function() {
+		$('.accMod').show();
 		$('.metAccMod').show();
+		$('.metAccMod').click(function() {
+			$('.accMod').hide();
+			$('.retType').show();
+			$('.metRet').show();
+		});
+		$('.metRet').click(function() {
+			$('.retType').hide();
+			$('.metRet').hide();
+			$('.metRet').click(function() {
+				$('.retType').hide();
+				$('.metRet').hide();
+			});
+		});
 	});
-	$('.decl').after('<br/><br/><br/>');
+	
+	$('.metRet').click(function() {
+		$('.metCreate').show();
+	});
+	$('.metCreate').click(function() {
+		$('.metEnd').show();
+	});
+	/*$('.syso').click(function() {
+		$('#write').append('System.Out.Println(');
+	});*/
+	$('.syso').after('<br/><br/><br/>');
 	$('.newline').after('<br/><br/><br/>');
 	$('#gt').after('<br/><br/><br/>');
 	if ($('.sym').not(':hidden')) {
@@ -36,9 +61,19 @@ $(function() {
 	if ($('.metAccMod').not(':hidden')) {
 		$('.metAccMod').click(function() {
 			$('.metAccMod').hide();
+			$('.metRet').show();
 		});
 	}
 	$('.finish').click(function() {
-		/*$('#write').append("\n}");*/
+		/* $('#write').append("\n}"); */
+	});
+	$('.syso').click(function() {
+		var clicks = $(this).data('clicks');
+		if (clicks) {
+			$('#write').append(');');
+		} else {
+			$('#write').append('System.Out.Println(');
+		}
+		$(this).data("clicks", !clicks);
 	});
 });

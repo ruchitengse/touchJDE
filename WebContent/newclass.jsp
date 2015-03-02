@@ -1,3 +1,4 @@
+<!-- References: http://code.tutsplus.com/tutorials/creating-a-keyboard-with-css-and-jquery--net-5774 -->
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -10,13 +11,14 @@
 <script type="text/javascript" src="js/keyboard.js"></script>
 <script type="text/javascript" src="js/typefeatures.js"></script>
 <link rel="stylesheet" type="text/css" href="css/keypad.css">
+<link rel="stylesheet" type="text/css" href="css/indexStyle.css">
 <title>TouchJDE New Class</title>
 </head>
 <body>
 	<div id="header">
 		<p>
-			touch<b>JDE</b>
-		</p>
+			<a href="index.jsp">touch<b>JDE</b></a>
+		</p><hr>
 	</div>
 	<div id="content"></div>
 	<%-- <textarea readonly id="area" cols="50" rows="1" style="border: none">public static void main(String args[]) {</textarea>
@@ -46,8 +48,10 @@
 			<li class="delete lastitem">delete</li>
 			<li class="finish">Finish</li>
 			<li class="newline">New Line</li>
-			<li class="methdecl">Func Decl</li>
 			<li class="decl">Var Decl</li>
+			<li class="coll">Coll Decl</li>
+			<li class="methdecl">Func Decl</li>
+			<li class="syso">Print</li>
 			<li class="sym">+</li>
 			<li class="sym">-</li>
 			<li class="sym">*</li>
@@ -63,19 +67,27 @@
 			<li class="types">float </li>
 			<li class="types">char </li>
 			<li class="types">double </li>
-			<li class="coll">Coll</li>
 			<li class="colltypes">int array</li>
 			<li class="colltypes">float array</li>
 			<li class="colltypes">char array</li>
 			<li class="colltypes">double</li>
 			<li class="colltypes">map</li>
 			<li class="colltypes">list</li>
-			<li class="metAccMod">public</li>
-			<li class="metAccMod">private</li>
-			<li class="metAccMod">protected</li>
-			<li class="metRet">void</li>
-			<li class="metRet">int</li>
-			<li class="metRet">float</li>
+			<li class="accMod">Acc Mod</li>
+			<li class="metAccMod">public </li>
+			<li class="metAccMod">private </li>
+			<li class="metAccMod">protected </li>
+			<li class="retType">Return Type</li>
+			<li class="metRet">void </li>
+			<li class="metRet">int </li>
+			<li class="metRet">float </li>
+			<li class="metCreate">Create Func</li>
+			<li class="metEnd">End Func</li>
+		</ul>
+		<ul id="loopsKeypad">
+		<li class=""></li>
+		<li class=""></li>
+		<li class=""></li>
 		</ul>
 	</div>
 	<div id="btnsplace"></div>

@@ -1,4 +1,4 @@
-package touchJDE;
+package cse6324.uta.edu;
 
 public class Controller {
 	public void printMethod() {
