@@ -22,8 +22,8 @@ function printtext(x) {
 	alert(x.value);
 	/* document.getElementById("btnsplace").innerHTML = btns; */
 }
-$(function(){
-    $(document).on("click", "#createBtn", function(event){
-        alert( "GO" ); 
-    }); 
-});
+/*$(function() {
+	$(document).on("click", "#createBtn", function(event) {
+		alert("GO");
+	});
+});*/

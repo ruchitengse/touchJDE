@@ -19,10 +19,12 @@
 	<div id="content">
 		<p>This is a web-based IDE for JAVA which helps the beginners to
 			develop and understand simple classes</p>
-		<button class="btn btn-1" style="width: 120px"
+		<!-- <button class="btn btn-1" style="width: 120px"
 			onclick="alert('Open');">
 			Open<br />created classes
-		</button>
+		</button> -->
+		<a class="btn btn-1" href="openclasses.jsp"> Open<br />created classes
+		</a>
 		<a class="btn" href="newclass.jsp"> Create<br />class
 		</a>
 		<div id="openModal" class="modalDialog">

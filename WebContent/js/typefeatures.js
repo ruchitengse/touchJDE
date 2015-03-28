@@ -16,7 +16,7 @@ $(function() {
 	});
 	$('.varstore').click(function() {
 		$('.varstore').show();
-		/*$.session.get("sessVar");*/
+		/* $.session.get("sessVar"); */
 	});
 	$('.methdecl').click(function() {
 		$('.accMod').show();
@@ -35,16 +35,17 @@ $(function() {
 			});
 		});
 	});
-	
+
 	$('.metRet').click(function() {
 		$('.metCreate').show();
 	});
 	$('.metCreate').click(function() {
 		$('.metEnd').show();
 	});
-	/*$('.syso').click(function() {
-		$('#write').append('System.Out.Println(');
-	});*/
+	/*
+	 * $('.syso').click(function() { $('#write').append('System.Out.Println(');
+	 * });
+	 */
 	$('.syso').after('<br/><br/><br/>');
 	$('.newline').after('<br/><br/><br/>');
 	$('#gt').after('<br/><br/><br/>');
@@ -75,5 +76,29 @@ $(function() {
 			$('#write').append('System.Out.Println(');
 		}
 		$(this).data("clicks", !clicks);
+	});
+
+	/*$("#save").click(function() {
+		var name = document.getElementById("write");
+		var s = name.value;
+		arr.push(s);
+		alert(arr);
+	});*/
+	if(sessionStorage.getItem("saveClass") != ""){
+	    $('#write').val(sessionStorage.getItem("gbookmsg"));
+	}
+	$('#save').click(function () {
+		 
+	    if (window.sessionStorage) {
+	        sessionStorage.setItem("saveClass", $('#write').val());
+	        /*setTimeout(function() {
+	         //window.location.replace("http://jsfiddle.net/chauhangs/AfhGR/1/show");
+	    }, 500);*/
+	       alert(sessionStorage.getItem("saveClass"));
+	    }
+	});
+	$("a[name='openClass']").on("click", function () {
+		window.location.href='newclass.jsp';
+		alert(sessionStorage.getItem("saveClass"));
 	});
 });

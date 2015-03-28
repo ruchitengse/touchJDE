@@ -31,7 +31,7 @@
 	<br />
 
 	<button id="btnimp" onclick="btnimp(this)" value="'<br/>'">import</button> --%>
-
+	
 	<div id="container">
 		<textarea id="write" rows="6" cols="60"></textarea>
 		<ul id="keyboard">
@@ -91,6 +91,6 @@
 		<li class=""></li>
 		</ul>
 	</div>
-	<div id="btnsplace"></div>
+	<button id="save">Save</button>
 </body>
 </html>

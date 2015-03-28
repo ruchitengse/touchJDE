@@ -84,7 +84,7 @@ $(function() {
 					varDecl = varName + "=";
 					/* $.session.set("sessVar", varName); */
 					character = varDecl;
-					alert(varName);
+					/*alert(varName);*/
 				}
 
 				if ($this.hasClass('metCreate')) {
