@@ -1,9 +1,24 @@
 /*References: http://code.tutsplus.com/tutorials/creating-a-keyboard-with-css-and-jquery--net-5774
  */
+//var clsName;
 $(function() {
+	//alert($('#clsName').val());
+	/*$("#formData").submit(function(e) {
+		//e.preventDefault();
+	    clsName = $(this).find('input[id=clsName]').val();
+	    console.log(clsName);
+	    alert(clsName);
+	});*/
+	/*alert($('#clsName').html());
+	var pkgName = $('#pkgName').val();
+	$write.append("package "+pkgName+";\n");
+	$write.append("public class "+clsName+" {\n");*/
 	var $write = $('#write'), shift = false, capslock = false;
-	$write.append("public static void main(String[] args)\n");
+	if(!$('.openedWrite')) {
+	$write.append("\npublic static void main(String[] args)\n");
 	$write.append("{\n");
+	}
+	//console.log(pkgName, clsName, $write);
 	$('#keyboard li').click(
 			function() {
 				var $this = $(this), character = $this.html(); // If it's a

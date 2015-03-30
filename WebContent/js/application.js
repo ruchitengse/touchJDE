@@ -22,6 +22,9 @@ function printtext(x) {
 	alert(x.value);
 	/* document.getElementById("btnsplace").innerHTML = btns; */
 }
+/*function subCall() {
+	alert(('#clsName').value);
+}*/
 /*$(function() {
 	$(document).on("click", "#createBtn", function(event) {
 		alert("GO");

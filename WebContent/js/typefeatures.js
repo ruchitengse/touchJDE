@@ -78,27 +78,33 @@ $(function() {
 		$(this).data("clicks", !clicks);
 	});
 
-	/*$("#save").click(function() {
-		var name = document.getElementById("write");
-		var s = name.value;
-		arr.push(s);
-		alert(arr);
-	});*/
-	if(sessionStorage.getItem("saveClass") != ""){
-	    $('#write').val(sessionStorage.getItem("gbookmsg"));
-	}
-	$('#save').click(function () {
-		 
-	    if (window.sessionStorage) {
-	        sessionStorage.setItem("saveClass", $('#write').val());
-	        /*setTimeout(function() {
-	         //window.location.replace("http://jsfiddle.net/chauhangs/AfhGR/1/show");
-	    }, 500);*/
-	       alert(sessionStorage.getItem("saveClass"));
-	    }
+	/*
+	 * $("#save").click(function() { var name =
+	 * document.getElementById("write"); var s = name.value; arr.push(s);
+	 * alert(arr); });
+	 */
+	$('#save').click(function() {
+
+		if (window.sessionStorage) {
+			sessionStorage.setItem("saveClass", $('#write').val());
+			/*
+			 * setTimeout(function() {
+			 * //window.location.replace("http://jsfiddle.net/chauhangs/AfhGR/1/show"); },
+			 * 500);
+			 */
+			alert(sessionStorage.getItem("saveClass"));
+		}
 	});
-	$("a[name='openClass']").on("click", function () {
-		window.location.href='newclass.jsp';
+	$("a[name='openClass']").click(function() {
+		// if (sessionStorage.getItem("saveClass") != "") {
+		// e.preventDefault();
 		alert(sessionStorage.getItem("saveClass"));
+		window.location.href = 'openedclass.jsp';
+		$('#write').text(sessionStorage.getItem("saveClass"));
+		// }
 	});
+	/*
+	 * for (var i = 0; i < sessionStorage.length; i++) {
+	 * console.log(sessionStorage.key(i)) };
+	 */
 });
