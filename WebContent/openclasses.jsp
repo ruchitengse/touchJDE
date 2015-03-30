@@ -1,3 +1,4 @@
+<%@page import="com.properties.ReadProperties"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -16,12 +17,17 @@
 <link rel="stylesheet" type="text/css" href="css/indexStyle.css">
 <title>Classes</title>
 </head>
+<%
+	String server = ReadProperties.getInstance().getValue("DATABASE_SERVER");
+	String username = ReadProperties.getInstance().getValue("DATABASE_USERNAME");
+	String password = ReadProperties.getInstance().getValue("DATABASE_PASSWORD");
+%>
 <body>
 	<p>Classes</p>
 	<a name="openClass" href="javascript:void(0);">Sample class</a>
 
 	<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-		url="jdbc:mysql://localhost:3306/touchJDE" user="root" password="Jaggi@830" />
+		url="<%=server%>" user="<%=username%>" password="<%=password%>" />
 	<sql:query dataSource="${snapshot}" var="result">
 SELECT * from classstore;
 	</sql:query>
