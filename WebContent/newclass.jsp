@@ -32,7 +32,14 @@
 	<br />
 
 	<button id="btnimp" onclick="btnimp(this)" value="'<br/>'">import</button> --%>
-<form action="insert.action" method="POST">
+	<%
+		String className = (String) request.getAttribute("cls");
+		if(className == null){
+			className = "Main";
+		}
+		%>
+<form action="insert.action" method="POST" name="codeForm" id="codeForm">
+	<input type="hidden" value="<%=className %>" name="className"/>
 	<div id="container">
 		<textarea id="write" rows="6" cols="60" name="create">${create}</textarea>
 		<ul id="keyboard">
@@ -65,10 +72,10 @@
 			<li class="sym">&#60;</li>
 			<li class="sym" id="gt">&#62;</li>
 			<li class="varstore">Store in Var</li>
-			<li class="types">int</li>
-			<li class="types">float</li>
-			<li class="types">char</li>
-			<li class="types">double</li>
+			<li class="types">int </li>
+			<li class="types">float </li>
+			<li class="types">char </li>
+			<li class="types">double </li>
 			<li class="colltypes">int array</li>
 			<li class="colltypes">float array</li>
 			<li class="colltypes">char array</li>
@@ -76,27 +83,28 @@
 			<li class="colltypes">map</li>
 			<li class="colltypes">list</li>
 			<li class="accMod">Acc Mod</li>
-			<li class="metAccMod">public</li>
-			<li class="metAccMod">private</li>
-			<li class="metAccMod">protected</li>
+			<li class="metAccMod">public </li>
+			<li class="metAccMod">private </li>
+			<li class="metAccMod">protected </li>
 			<li class="retType">Return Type</li>
-			<li class="metRet">void</li>
-			<li class="metRet">int</li>
-			<li class="metRet">float</li>
+			<li class="metRet">void </li>
+			<li class="metRet">int </li>
+			<li class="metRet">float </li>
 			<li class="metCreate">Create Func</li>
 			<li class="metEnd">End Func</li>
 		</ul>
 		<ul id="loopsKeypad">
-			<li class=""></li>
-			<li class=""></li>
-			<li class=""></li>
+		<li class=""></li>
+		<li class=""></li>
+		<li class=""></li>
 		</ul>
-	</div>
+		<input type="button" name="submitbutton" id="submitbutton" value="Compile Code"/>
+	</div>	
 	<input type="hidden" name="cls" value="${cls}"/>
 	<input type="submit" value="SAVE" />
 	<!-- <button id="save"
 		onclick="insert.action?create=(getElementById('create'.val()))">Save</button> -->
 	</form>
-	
+	<div id="compileResult"></div>
 </body>
 </html>
