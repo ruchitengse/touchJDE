@@ -120,3 +120,29 @@ $(function() {
 				$write.html($write.html() + character);
 			});
 });
+
+$(function(){
+	$('#submitbutton').click(
+			function(){
+				dataString = $('#codeForm').serialize();
+				$.ajax({
+					type: "POST",
+					url: "CompileProgram",
+					data: dataString,
+					dataType: "json",
+					
+					success: function(data, textStatus, jqXHR){
+						if(textStatus == "success"){
+							$("#compileResult").html(data);
+						} else {
+							$("#compileResult").html("Error while compiling code!" + textStatus);
+						}
+					},
+					
+					error: function(jqXHR, textStatus, errorThrown){
+						console.log("Something really bad happened: " + textStatus);
+						$('#ajaxResponse').html(jqXHR.responseText);
+					}
+				});
+			});
+});
