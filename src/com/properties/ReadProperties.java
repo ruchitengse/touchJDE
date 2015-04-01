@@ -6,16 +6,9 @@
 package com.properties;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import javax.servlet.ServletContext;
-
-import com.web.servlet.CompileProgram;
-
-import cse6324.uta.edu.ControllerServlet;
 
 /**
  *
@@ -42,11 +35,11 @@ public class ReadProperties {
         }
     }
     
-    public String getValue(String key){
+    public String getValue(final String key){
         return props.getProperty(key);
     }
     
-    public void setValue(String key, String value){
+    public void setValue(final String key, final String value){
         props.setProperty(key, value);
     }
 }
