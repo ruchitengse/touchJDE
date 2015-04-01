@@ -28,7 +28,7 @@ public class Database {
     }
 
     private static void setConnectionString() {
-        connectionString = ReadProperties.getInstance().getValue("DATABASE_SERVER") + "?user=" + ReadProperties.getInstance().getValue("DATABASE_USER") + "&password=" + ReadProperties.getInstance().getValue("DATABASE_PASSWORD");
+        connectionString = ReadProperties.getInstance().getValue("DATABASE_SERVER") + "?user=" + ReadProperties.getInstance().getValue("DATABASE_USERNAME") + "&password=" + ReadProperties.getInstance().getValue("DATABASE_PASSWORD");
     }
 	
     public void closeConnection(){

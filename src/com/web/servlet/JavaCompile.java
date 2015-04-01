@@ -13,7 +13,6 @@ public class JavaCompile {
 	
 	private static String javaFileLocation = ReadProperties.getInstance().getValue("FILE_STORAGE_DIRECTORY");
 	private static String javaCompilerPath = ReadProperties.getInstance().getValue("JAVA_HOME") + System.getProperty("file.separator") + "bin" + System.getProperty("file.separator") + "javac";
-	private static String javaRunPath = ReadProperties.getInstance().getValue("JAVA_HOME") + System.getProperty("file.separator") + "bin" + System.getProperty("file.separator") + "java";
 
 	public static String compileProgram(String javaCode, String pkgName, String className) {
 		
@@ -21,14 +20,14 @@ public class JavaCompile {
 		BufferedReader stdInput = null, stdError = null;
 		String javaFilePath = javaFileLocation;
 		if(!"".equals(pkgName)){
-			pkgName = pkgName.replaceAll("\\.", System.getProperty("file.separator"));
+			pkgName = pkgName.replace(".", System.getProperty("file.separator"));
 			javaFilePath += pkgName;
 		}
 		String compileClassName = className + ".java";
 		File f = new File(javaFilePath);
 		boolean dirCreated = false;
 		if(!f.exists()){
-			dirCreated = f.mkdir();
+			dirCreated = f.mkdirs();
 		} else {
 			dirCreated = true;
 		}
