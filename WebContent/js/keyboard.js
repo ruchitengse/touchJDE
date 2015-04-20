@@ -109,6 +109,10 @@ $(function() {
 					/*alert(varName);*/
 					$('.varDisplay #keyboard').append("<li onclick=alert(varName); class='var'>"+varName+"</li>");
 				}
+				
+				if ($this.hasClass('var')) {
+					character = 'nakkan';
+				}
 
 				if ($this.hasClass('metCreate')) {
 					var x = Math.floor((Math.random() * 10) + 1);

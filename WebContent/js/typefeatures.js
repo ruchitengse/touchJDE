@@ -148,6 +148,6 @@ $(function() {
 	});
 	/*
 	 * for (var i = 0; i < sessionStorage.length; i++) {
-	 * console.log(sessionStorage.key(i)) };
+	 * console.log(sessionStorage.key(i))  };
 	 */
 });
