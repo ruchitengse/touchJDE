@@ -118,6 +118,10 @@ body {
 	display: none;
 }
 
+.condDec {
+	display: none;
+}
+
 #keyboard li:hover {
 	position: relative;
 	top: 1px;
