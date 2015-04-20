@@ -25,81 +25,91 @@
 	<jsp:include page="keypad.jsp"></jsp:include>
 	<%
 		String className = (String) request.getAttribute("cls");
-		if(className == null){
+		if (className == null) {
 			className = "Main";
 		}
-		%>
-		<center>
-<form action="insert.action" method="POST" name="codeForm" id="codeForm">
-	<input type="hidden" value="<%=className %>" name="className"/>
-	<div id="container">
-		<div class="canvas">Your Coding Canvas:</div>
-		<textarea id="write" class="codebox" name="create">${create}</textarea>
-		<ul id="keyboard">
-			<li class="symbol"><span class="off">1</span><span class="on">!</span></li>
-			<li class="symbol"><span class="off">2</span><span class="on">@</span></li>
-			<li class="symbol"><span class="off">3</span><span class="on">#</span></li>
-			<li class="symbol"><span class="off">4</span><span class="on">$</span></li>
-			<li class="symbol"><span class="off">5</span><span class="on">%</span></li>
-			<li class="symbol"><span class="off">6</span><span class="on">^</span></li>
-			<li class="symbol"><span class="off">7</span><span class="on">&amp;</span></li>
-			<li class="symbol"><span class="off">8</span><span class="on">*</span></li>
-			<li class="symbol"><span class="off">9</span><span class="on">(</span></li>
-			<li class="symbol"><span class="off">0</span><span class="on">)</span></li>
-			<li class="symbol" id="semicol"><span class="off">;</span></li>
-			<li class="delete lastitem">delete</li>
-			<li class="finish">Finish</li>
-			<li class="newline">New Line</li>
-			<li class="main">Main</li>
-			<li class="decl">Var Decl</li>
-			<li class="coll">Coll Decl</li>
-			<li class="methdecl">Func Decl</li>
-			<li class="syso">Print</li>
-			<li class="sym">+</li>
-			<li class="sym">-</li>
-			<li class="sym">*</li>
-			<li class="sym">/</li>
-			<li class="sym">%</li>
-			<li class="sym">^</li>
-			<li class="sym">!</li>
-			<li class="sym">=</li>
-			<li class="sym">&#60;</li>
-			<li class="sym" id="gt">&#62;</li>
-			<li class="varstore">Store in Var</li>
-			<li class="types">int </li>
-			<li class="types">float </li>
-			<li class="types">char </li>
-			<li class="types">double </li>
-			<li class="colltypes">int array</li>
-			<li class="colltypes">float array</li>
-			<li class="colltypes">char array</li>
-			<li class="colltypes">double</li>
-			<li class="colltypes">map</li>
-			<li class="colltypes">list</li>
-			<li class="accMod">Acc Mod</li>
-			<li class="metAccMod">public </li>
-			<li class="metAccMod">private </li>
-			<li class="metAccMod">protected </li>
-			<li class="retType">Return Type</li>
-			<li class="metRet">void </li>
-			<li class="metRet">int </li>
-			<li class="metRet">float </li>
-			<li class="metCreate">Create Func</li>
-			<li class="metEnd">End Func</li>
-		</ul>
-		<ul id="loopsKeypad">
-		<li class=""></li>
-		<li class=""></li>
-		<li class=""></li>
-		</ul>
-	</div>
-	<br>
-	<br>
-	<input type="button" class="button" name="submitbutton" id="submitbutton" value="Compile and Run Code"/>
-	<input type="submit" class="button" value="Save Class" />
-	<input type="hidden" name="cls" value="${cls}"/>
-	</form>
-	<div id="compileResult" class="compileRes"></div>
+	%>
+	<center>
+		<form action="insert.action" method="POST" name="codeForm"
+			id="codeForm">
+			<input type="hidden" value="<%=className%>" name="className" />
+			<div id="container">
+				<div class="canvas">Your Coding Canvas:</div>
+				<textarea id="write" class="codebox" name="create">${create}</textarea>
+				<ul id="keyboard">
+					<li class="symbol"><span class="off">1</span><span class="on">!</span></li>
+					<li class="symbol"><span class="off">2</span><span class="on">@</span></li>
+					<li class="symbol"><span class="off">3</span><span class="on">#</span></li>
+					<li class="symbol"><span class="off">4</span><span class="on">$</span></li>
+					<li class="symbol"><span class="off">5</span><span class="on">%</span></li>
+					<li class="symbol"><span class="off">6</span><span class="on">^</span></li>
+					<li class="symbol"><span class="off">7</span><span class="on">&amp;</span></li>
+					<li class="symbol"><span class="off">8</span><span class="on">*</span></li>
+					<li class="symbol"><span class="off">9</span><span class="on">(</span></li>
+					<li class="symbol"><span class="off">0</span><span class="on">)</span></li>
+					<li class="symbol" id="semicol"><span class="off">;</span></li>
+					<li class="delete lastitem">delete</li>
+					<li class="finish">Finish</li>
+					<li class="newline">New Line</li>
+					<li class="main">Main</li>
+					<li class="decl">Var Decl</li>
+					<li class="coll">Coll Decl</li>
+					<li class="methdecl">Func Decl</li>
+					<li class="conds1">Decision</li>
+					<li class="conds2">Looping</li>
+					<li class="syso">Print</li>
+					<li class="sym">+</li>
+					<li class="sym">-</li>
+					<li class="sym">*</li>
+					<li class="sym">/</li>
+					<li class="sym">%</li>
+					<li class="sym">^</li>
+					<li class="sym">!</li>
+					<li class="sym">=</li>
+					<li class="sym">&#60;</li>
+					<li class="sym" id="gt">&#62;</li>
+					<li class="varstore">Store in Var</li>
+					<li class="types">int</li>
+					<li class="types">float</li>
+					<li class="types">char</li>
+					<li class="types">double</li>
+					<li class="colltypes">int array</li>
+					<li class="colltypes">float array</li>
+					<li class="colltypes">char array</li>
+					<li class="colltypes">double</li>
+					<li class="colltypes">map</li>
+					<li class="colltypes">list</li>
+					<li class="accMod">Acc Mod</li>
+					<li class="metAccMod">public</li>
+					<li class="metAccMod">private</li>
+					<li class="metAccMod">protected</li>
+					<li class="retType">Return Type</li>
+					<li class="metRet">void</li>
+					<li class="metRet">int</li>
+					<li class="metRet">float</li>
+					<li class="metCreate">Create Func</li>
+					<li class="metEnd">End Func</li>
+					<li class="condDec" id="condDecif">if</li>
+					<li class="condDec" id="condDecElsIf">else if</li>
+					<li class="condDec" id="condDecEls">else</li>
+					<li class="condDec" id="condDecswitch">switch</li>
+				</ul>
+				<ul id="loopsKeypad">
+					<li class=""></li>
+					<li class=""></li>
+					<li class=""></li>
+				</ul>
+			</div>
+			<br> <br> <input type="button" class="button"
+				name="submitbutton" id="submitbutton" value="Compile and Run Code" />
+			<input type="submit" class="button" value="Save Class" /> <input
+				type="hidden" name="cls" value="${cls}" />
+		</form>
+		<div class="varDisplay">
+			<ul id="keyboard">
+			</ul>
+		</div>
+		<div id="compileResult" class="compileRes"></div>
 	</center>
 </body>
 </html>
