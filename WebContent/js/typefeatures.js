@@ -65,17 +65,53 @@ $(function() {
 			$('.metRet').show();
 		});
 	}
+	$('.conds1').click(function() {
+		$('.condDec').show();
+		$('#condDecElsIf').hide();
+		$('#condDecEls').hide();
+	});
 	$('.finish').click(function() {
 		/* $('#write').append("\n}"); */
 	});
+	/* System.out.println */
 	$('.syso').click(function() {
 		var clicks = $(this).data('clicks');
 		if (clicks) {
 			$('#write').append(');');
 		} else {
-			$('#write').append('System.out.println(');
+			$('#write').append('\nSystem.out.println(');
 		}
 		$(this).data("clicks", !clicks);
+	});
+	
+	//if condition
+	$('#condDecif').click(function() {
+		var ifclicks = $(this).data('ifclicks');
+		if (ifclicks) {
+			$('#write').append(')	{');
+		} else {
+			$('#write').append('\nif(');
+		}
+		$(this).data("ifclicks", !ifclicks);
+		$('#condDecElsIf').show();
+		$('#condDecEls').show();
+	});
+
+	//else if condition
+	$('#condDecElsIf').click(function() {
+		var elsifclicks = $(this).data('elsifclicks');
+		if (elsifclicks) {
+			$('#write').append(')	{\n');
+		} else {
+			$('#write').append('\nelse if(');
+		}
+		$(this).data("elsifclicks", !elsifclicks);
+	});
+	
+	//else condition
+	$('#condDecEls').click(function() {
+		$('#write').append('else	{');
+		$('#condDecEls').hide();
 	});
 
 	/*
@@ -108,14 +144,9 @@ $(function() {
 	 * console.log(sessionStorage.key(i)) };
 	 */
 	$('.alpBtn').click(function() {
-
-		// Set the effect type
-		//var effect = 'slide';
-		// Set the options for the effect type chosen
 		var options = {
 			direction : 'left'
 		};
-		// Set the duration (default: 400 milliseconds)
 		var duration = 500;
 		$('#chrDiv').toggle(options, duration);
 	});

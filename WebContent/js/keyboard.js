@@ -75,10 +75,14 @@ $(function() {
 				}
 
 				if ($this.hasClass('decl') || $this.hasClass('coll')
-						|| $this.hasClass('methdecl') || $this.hasClass('syso')
+						|| $this.hasClass('methdecl')
+						|| $this.hasClass('syso')
 						|| $this.hasClass('accMod')
 						|| $this.hasClass('retType')
-						|| $this.hasClass('metCreate')) {
+						|| $this.hasClass('metCreate') 
+						|| $this.hasClass('conds1')
+						|| $this.hasClass('conds2')
+						|| $this.hasClass('condDec')) {
 					character = '';
 				}
 
@@ -103,6 +107,7 @@ $(function() {
 					/* $.session.set("sessVar", varName); */
 					character = varDecl;
 					/*alert(varName);*/
+					$('.varDisplay #keyboard').append("<li onclick=alert(varName); class='var'>"+varName+"</li>");
 				}
 
 				if ($this.hasClass('metCreate')) {
