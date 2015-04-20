@@ -40,10 +40,10 @@
 				<br/>
 				<h3><label>Enter Package Name:</label></h3>
 				<h5>(Example: com.package.example)</h5>
-				<input type="text" id="pkgName" size="50" name="pkgName"/><br/><br/>
+				<input type="text" id="pkgName" size="50" name="pkgName" required/><br/><br/>
 				<h3><labeL>Enter Class Name:</labeL></h3>
 				<h5>(Example: TestClassExample)</h5>
-				<input type="text" id="clsName" size="50" name="clsName"/><br/><br/>
+				<input type="text" id="clsName" size="50" name="clsName" required/><br/><br/>
 				<input type="submit" name="createCls" value="Create" class="btn btn-2"/>
 				</form>
 			</div>
