@@ -113,7 +113,7 @@ $(function() {
 		$('#write').append('else	{');
 		$('#condDecEls').hide();
 	});
-
+	
 	/*
 	 * $("#save").click(function() { var name =
 	 * document.getElementById("write"); var s = name.value; arr.push(s);
@@ -139,15 +139,15 @@ $(function() {
 		$('#write').text(sessionStorage.getItem("saveClass"));
 		// }
 	});
-	/*
-	 * for (var i = 0; i < sessionStorage.length; i++) {
-	 * console.log(sessionStorage.key(i)) };
-	 */
 	$('.alpBtn').click(function() {
 		var options = {
-			direction : 'left'
+			direction : 'left',
 		};
 		var duration = 500;
 		$('#chrDiv').toggle(options, duration);
 	});
+	/*
+	 * for (var i = 0; i < sessionStorage.length; i++) {
+	 * console.log(sessionStorage.key(i)) };
+	 */
 });
