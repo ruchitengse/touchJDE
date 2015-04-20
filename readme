@@ -1,0 +1,10 @@
+1. Configure Eclipse IDE to run web applications.
+2. Checkout TouchJDE project from GitHub repository - https://github.com/jaggi-sg/touchJDE
+You can checkout from eclipse or you can download the zip itself from github.
+3. Navigate to touchjde.properties file and change the following properties
+   - JAVA_HOME to the java jdk folder in your machine
+   - FILE_STORAGE_DIRECTORY to the directory in which you desire to store the created java files
+   - DATABASE_SERVER - The MySQL database server along with database name
+   - DATABASE_USERNAME - Your MySQL username
+   - DATABASE_PASSWORD - Your MySQL password
+4. Run the web application from index.jsp, that will be your launching file.
