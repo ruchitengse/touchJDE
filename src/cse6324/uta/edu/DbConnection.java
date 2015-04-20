@@ -24,20 +24,27 @@ public class DbConnection {
 			System.out.println(sqlcheck);
 			rs = stmt.executeQuery(sqlcheck);
 			if (!rs.next()) {
-				String sql = "INSERT into classstore values (?,?,?)";
+				String sql = "INSERT into classstore (classID, className, classData) values (?,?,?)";
 				preparedStmt = connection.prepareStatement(sql);
 				String clsId = "cl" + rand;
 				preparedStmt.setString(1, clsId);
 				preparedStmt.setString(2, cls);
 				preparedStmt.setString(3, insertCls);
-				preparedStmt.execute();
+				preparedStmt.executeUpdate();
 			} else {
 				String sqlupdate = "UPDATE classstore SET classData='" + insertCls +"' WHERE className='" + cls +"'";
 				System.out.println(sqlupdate);
 				stmt.executeUpdate(sqlupdate);
 			}
+			connection.commit();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			e.printStackTrace();
 		} finally {
 			if(rs != null){
@@ -67,6 +74,7 @@ public class DbConnection {
 			if(connection != null){
 				try {
 					connection.close();
+					Database.closeConnection();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

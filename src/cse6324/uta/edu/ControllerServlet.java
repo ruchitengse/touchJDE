@@ -3,6 +3,7 @@ package cse6324.uta.edu;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -63,7 +64,7 @@ public class ControllerServlet extends HttpServlet {
 	}
 
 	private void doPostInsertAction(HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String insertCls = request.getParameter("create"); 
 		String cls = request.getParameter("cls");
@@ -71,6 +72,8 @@ public class ControllerServlet extends HttpServlet {
 		System.out.println("insert: "+cls);
 		DbConnection db = new DbConnection();
 		db.insert(cls, insertCls);
+		RequestDispatcher rd = request.getRequestDispatcher("newclass.jsp");
+		rd.forward(request, response);
 	}
 	
 	private void doPostCreateAction(HttpServletRequest request,

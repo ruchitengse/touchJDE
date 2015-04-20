@@ -31,7 +31,7 @@ public class Database {
         connectionString = ReadProperties.getInstance().getValue("DATABASE_SERVER") + "?user=" + ReadProperties.getInstance().getValue("DATABASE_USERNAME") + "&password=" + ReadProperties.getInstance().getValue("DATABASE_PASSWORD");
     }
 	
-    public void closeConnection(){
+    public static void closeConnection(){
         if(connection != null){
                 try {
                         connection.close();
