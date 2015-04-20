@@ -119,7 +119,7 @@ $(function() {
 
 				if ($this.hasClass('finish')) {
 					character = '\n }';
-				} 
+				}
 
 				/*
 				 * if ($this.hasClass('symbol')) { $('.on').show(); }
