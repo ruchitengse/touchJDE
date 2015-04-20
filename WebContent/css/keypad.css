@@ -11,7 +11,7 @@ body {
 
 #container {
 	margin: 100px auto;
-	width: 688px;
+	width: 850px;
 }
 
 #keyboard {
@@ -23,15 +23,18 @@ body {
 #keyboard li {
 	float: left;
 	margin: 0 5px 5px 0;
-	width: 40px;
-	height: 40px;
-	/* 	line-height: 40px; */
+	width: 55px;
+	height: 55px;
 	text-align: center;
 	background: #fff;
 	border: 1px solid #f9f9f9;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	overflow: hidden;
+	font: normal normal bold 15px "Courier New", Courier, monospace;
+	-webkit-box-shadow: 1px 1px 1px 0 rgba(0,255,255,1) ;
+  	box-shadow: 1px 1px 1px 0 rgba(0,255,255,1) ;
+  	text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;
 }
 
 .capslock, .tab, .left-shift {

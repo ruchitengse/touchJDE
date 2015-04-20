@@ -39,12 +39,17 @@ public class CompileProgram extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		StringBuilder javaClassCode = new StringBuilder();
 		String classCode = request.getParameter("create");
-		javaClassCode.append(classCode);
-		String pkgName = "";
-		if(javaClassCode.toString().startsWith("package")){
-			pkgName = javaClassCode.toString().split(";")[0].replaceAll("package ", "");
+		String res = "";
+		if("".equals(classCode.trim())){
+			res = "No code found to compile";
+		} else {
+			javaClassCode.append(classCode);
+			String pkgName = "";
+			if(javaClassCode.toString().startsWith("package")){
+				pkgName = javaClassCode.toString().split(";")[0].replaceAll("package ", "");
+			}
+			res = JavaCompile.compileAndRunProgram(javaClassCode.toString(), pkgName, request.getParameter("className"));
 		}
-		String res = JavaCompile.compileAndRunProgram(javaClassCode.toString(), pkgName, request.getParameter("className"));
 		String json = new Gson().toJson(res);
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");

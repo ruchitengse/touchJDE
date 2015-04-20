@@ -210,12 +210,12 @@ a {
 
 .codebox {
   display: block;
-  width: 650px;
+  width: 800px;
   height: 300px;
   padding: 8px;
   border: 1px solid #cccccc;
-  line-height: 130%;
-  font-size: 13px;
+  margin: 0 5px 5px 0;
+  font-size: 15px;
   font: normal normal bold 20px "Courier New", Courier, monospace;
 }
 
@@ -236,19 +236,4 @@ a {
   border: 1px solid #cccccc;
   font-size: 13px;
   font: normal normal bold 20px "Courier New", Courier, monospace;
-}
-
-.keyStyle {
-  padding:4px;
-  max-height: 100%;
-  max-width: 100%;
-  overflow: visible;
-  position: relative;
-  font: normal normal bold 15px "Courier New", Courier, monospace;
-  color: rgba(0,0,0,1);
-  text-align: center;
-  background: rgba(111,168,220,1);
-  -webkit-box-shadow: 1px 1px 1px 0 rgba(0,255,255,1) ;
-  box-shadow: 1px 1px 1px 0 rgba(0,255,255,1) ;
-  text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;
 }
