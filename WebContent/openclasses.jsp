@@ -24,7 +24,7 @@
 %>
 <body>
 	<p>Classes</p>
-	<a name="openClass" href="javascript:void(0);">Sample class</a>
+	<!-- <a name="openClass" href="javascript:void(0);">Sample class</a> -->
 
 	<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
 		url="<%=server%>" user="<%=username%>" password="<%=password%>" />

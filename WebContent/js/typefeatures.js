@@ -73,7 +73,7 @@ $(function() {
 		if (clicks) {
 			$('#write').append(');');
 		} else {
-			$('#write').append('System.Out.Println(');
+			$('#write').append('System.out.println(');
 		}
 		$(this).data("clicks", !clicks);
 	});
@@ -107,4 +107,16 @@ $(function() {
 	 * for (var i = 0; i < sessionStorage.length; i++) {
 	 * console.log(sessionStorage.key(i)) };
 	 */
+	$('.alpBtn').click(function() {
+
+		// Set the effect type
+		//var effect = 'slide';
+		// Set the options for the effect type chosen
+		var options = {
+			direction : 'left'
+		};
+		// Set the duration (default: 400 milliseconds)
+		var duration = 500;
+		$('#chrDiv').toggle(options, duration);
+	});
 });

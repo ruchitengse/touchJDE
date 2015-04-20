@@ -34,14 +34,17 @@
 		</a>
 		<div id="openModal" class="modalDialog">
 			<div>
-			<p>Enter Class details to create:</p>
+			<!-- <p>Enter Class details to create:</p> -->
 				<a href="#close" title="Close" class="close">X</a>
 				<form action="create.action" method="post" id="formData">
-				<labeL>Enter Package:</labeL><br/>
+				<br/>
+				<h3><label>Enter Package Name:</label></h3>
+				<h5>(Example: com.package.example)</h5>
 				<input type="text" id="pkgName" size="50" name="pkgName"/><br/><br/>
-				<labeL>Enter Class Name:</labeL><br/>
+				<h3><labeL>Enter Class Name:</labeL></h3>
+				<h5>(Example: TestClassExample)</h5>
 				<input type="text" id="clsName" size="50" name="clsName"/><br/><br/>
-				<input type="submit" name="createCls" value="Create" ;/>
+				<input type="submit" name="createCls" value="Create" class="btn btn-2"/>
 				</form>
 			</div>
 		</div>

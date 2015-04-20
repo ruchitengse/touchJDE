@@ -88,6 +88,9 @@ $(function() {
 				if ($this.hasClass('metEnd')) {
 					character = '	}';
 				}
+				if ($this.hasClass('main')) {
+					character = '\npublic static void main(String[] args) {\n';
+				}
 				/*
 				 * if ($this.hasClass('syso')) { character =
 				 * 'System.Out.Println('; }

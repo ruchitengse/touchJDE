@@ -28,17 +28,20 @@ public class JavaCompile {
 		if(fileCreated){
 			String response = compileProgram(javaCode, newPackageName, className);
 			if("".equals(response)){
-				/*response = runProgram(javaCode, pkgName, className);
-				if("".equals(response)){
-					response = "No output to display.";
-				}*/
-				response = "The code compiled successfully";
+				response = "The code compiled successfully. <br>";
+				String runResponse = runProgram(javaCode, pkgName, className);
+				if("".equals(runResponse)){
+					response += "No output to display. <br>";
+				} else {
+					response += "\n Output of program: <br>";
+					response += runResponse;
+				}
 			} else {
-				response = "The file could not compile" + response;
+				response = "The file could not compile <br>" + response;
 			}
 			return response;
 		} else {
-			return "An error occured. Could not create file.";
+			return "An error occured. Could not create file. <br>";
 		}
 	}
 	
@@ -73,27 +76,26 @@ public class JavaCompile {
 		
 		StringBuilder response = new StringBuilder();
 		BufferedReader stdInput = null, stdError = null;
-		String javaFileCommand = pkgName + "." + className;
-		String pattern = Pattern.quote(System.getProperty("file.separator"));
+		String javaFileCommand = "";
+		if(!"".equals(pkgName)){
+			javaFileCommand = pkgName + ".";
+		}
+		javaFileCommand += className;
 		try {
-			String driveLetter = javaFileLocation.split(pattern)[0];
-			String javaPath = javaFileLocation.split(pattern)[1];
-			String openDirectoryCommand = "cmd /c " + driveLetter;
-			Process p = new ProcessBuilder(openDirectoryCommand).start();
-			openDirectoryCommand = "cd " + javaPath;
-			p = new ProcessBuilder(openDirectoryCommand).start();
 			String command = "\"" + javaRunPath + "\"" + " " + "\"" + javaFileCommand + "\"";
-            p = new ProcessBuilder(command).start();
-            stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
-            stdError = new BufferedReader(new InputStreamReader(p.getErrorStream()));
+			ProcessBuilder p = new ProcessBuilder(command);
+			p.directory(new File(javaFileLocation));
+            Process proc = p.start();
+            stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+            stdError = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
             String s;
 	        while ((s = stdInput.readLine()) != null) {
                 response.append(s);
-                response.append("\n");
+                response.append("<br>");
             }
             while((s = stdError.readLine()) != null){
                 response.append(s);
-                response.append("\n");
+                response.append("<br>");
             }
 	            
 	} catch (IOException e) {
@@ -133,11 +135,11 @@ public class JavaCompile {
             String s;
 	        while ((s = stdInput.readLine()) != null) {
                 response.append(s);
-                response.append("\n");
+                response.append("<br>");
             }
             while((s = stdError.readLine()) != null){
                 response.append(s);
-                response.append("\n");
+                response.append("<br>");
             }
 	            
 		} catch (IOException e) {
