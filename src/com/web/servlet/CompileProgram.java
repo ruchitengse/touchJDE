@@ -44,11 +44,10 @@ public class CompileProgram extends HttpServlet {
 		if(javaClassCode.toString().startsWith("package")){
 			pkgName = javaClassCode.toString().split(";")[0].replaceAll("package ", "");
 		}
-		String res = JavaCompile.compileProgram(javaClassCode.toString(), pkgName, request.getParameter("className"));
+		String res = JavaCompile.compileAndRunProgram(javaClassCode.toString(), pkgName, request.getParameter("className"));
 		String json = new Gson().toJson(res);
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().write(json);
-		
 	}
 }
