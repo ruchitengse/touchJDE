@@ -2,27 +2,27 @@
  */
 //var clsName;
 $(function() {
-	//alert($('#clsName').val());
-	/*$("#formData").submit(function(e) {
-		//e.preventDefault();
-	    clsName = $(this).find('input[id=clsName]').val();
-	    console.log(clsName);
-	    alert(clsName);
-	});*/
-	/*alert($('#clsName').html());
-	var pkgName = $('#pkgName').val();
-	$write.append("package "+pkgName+";\n");
-	$write.append("public class "+clsName+" {\n");*/
+	// alert($('#clsName').val());
+	/*
+	 * $("#formData").submit(function(e) { //e.preventDefault(); clsName =
+	 * $(this).find('input[id=clsName]').val(); console.log(clsName);
+	 * alert(clsName); });
+	 */
+	/*
+	 * alert($('#clsName').html()); var pkgName = $('#pkgName').val();
+	 * $write.append("package "+pkgName+";\n"); $write.append("public class
+	 * "+clsName+" {\n");
+	 */
 	var $write = $('#write'), shift = false, capslock = false;
-	if(!$('.openedWrite')) {
-	$write.append("\npublic static void main(String[] args)\n");
-	$write.append("{\n");
+	if (!$('.openedWrite')) {
+		$write.append("\npublic static void main(String[] args)\n");
+		$write.append("{\n");
 	}
-	//console.log(pkgName, clsName, $write);
+	// console.log(pkgName, clsName, $write);
 	$('#keyboard li').click(
 			function() {
 				var $this = $(this), character = $this.html(); // If it's a
-																// lowercase
+				// lowercase
 				// letter, nothing
 				// happens to this
 				// variable
@@ -47,7 +47,6 @@ $(function() {
 				// Delete
 				if ($this.hasClass('delete')) {
 					var html = $write.html();
-
 					$write.html(html.substr(0, html.length - 1));
 					return false;
 				}
@@ -75,14 +74,13 @@ $(function() {
 				}
 
 				if ($this.hasClass('decl') || $this.hasClass('coll')
-						|| $this.hasClass('methdecl')
-						|| $this.hasClass('syso')
+						|| $this.hasClass('methdecl') || $this.hasClass('syso')
 						|| $this.hasClass('accMod')
 						|| $this.hasClass('retType')
-						|| $this.hasClass('metCreate') 
-						|| $this.hasClass('conds1')
-						|| $this.hasClass('conds2')
-						|| $this.hasClass('condDec')) {
+						|| $this.hasClass('metCreate')
+						|| $this.hasClass('conds1') || $this.hasClass('conds2')
+						|| $this.hasClass('condDec')
+						|| $this.hasClass('condLoop')) {
 					character = '';
 				}
 
@@ -104,21 +102,20 @@ $(function() {
 					var x = Math.floor((Math.random() * 100) + 1);
 					varName = 'var' + x;
 					varDecl = varName + "=";
-					/* $.session.set("sessVar", varName); */
 					character = varDecl;
-					/*alert(varName);*/
-					$('.varDisplay #keyboard').append("<li onclick=alert(varName); class='var'>"+varName+"</li>");
-				}
-				
-				if ($this.hasClass('var')) {
-					character = 'nakkan';
+					$('.varDisplay #keyboard').append(
+							"<li class='varList'>"
+									+ varName + "</li>");
 				}
 
 				if ($this.hasClass('metCreate')) {
 					var x = Math.floor((Math.random() * 10) + 1);
-					var name = "func" + x;
-					var open = name + "()" + "\n	{";
+					var funcName = "func" + x;
+					var open = funcName + "()" + "\n	{";
 					character = open + "\n		";
+					$('.funcDisplay #keyboard').append(
+							"<li class='funcList'>"
+									+ funcName + "</li>");
 				}
 
 				if ($this.hasClass('finish')) {
@@ -133,28 +130,32 @@ $(function() {
 			});
 });
 
-$(function(){
+$(function() {
 	$('#submitbutton').click(
-			function(){
+			function() {
 				dataString = $('#codeForm').serialize();
-				$.ajax({
-					type: "POST",
-					url: "CompileProgram",
-					data: dataString,
-					dataType: "json",
-					
-					success: function(data, textStatus, jqXHR){
-						if(textStatus == "success"){
-							$("#compileResult").html(data);
-						} else {
-							$("#compileResult").html("Error while compiling code!" + textStatus);
-						}
-					},
-					
-					error: function(jqXHR, textStatus, errorThrown){
-						console.log("Something really bad happened: " + textStatus);
-						$('#ajaxResponse').html(jqXHR.responseText);
-					}
-				});
+				$
+						.ajax({
+							type : "POST",
+							url : "CompileProgram",
+							data : dataString,
+							dataType : "json",
+
+							success : function(data, textStatus, jqXHR) {
+								if (textStatus == "success") {
+									$("#compileResult").html(data);
+								} else {
+									$("#compileResult").html(
+											"Error while compiling code!"
+													+ textStatus);
+								}
+							},
+
+							error : function(jqXHR, textStatus, errorThrown) {
+								console.log("Something really bad happened: "
+										+ textStatus);
+								$('#ajaxResponse').html(jqXHR.responseText);
+							}
+						});
 			});
 });

@@ -65,10 +65,15 @@ $(function() {
 			$('.metRet').show();
 		});
 	}
+	//Decision Conditions click
 	$('.conds1').click(function() {
 		$('.condDec').show();
 		$('#condDecElsIf').hide();
 		$('#condDecEls').hide();
+	});
+	//Looping Conditions click
+	$('.conds2').click(function() {
+		$('.condLoop').show();
 	});
 	$('.finish').click(function() {
 		/* $('#write').append("\n}"); */
@@ -84,13 +89,24 @@ $(function() {
 		$(this).data("clicks", !clicks);
 	});
 	
+	//Display stored variables for further usage
+	$('.varDisp').on("click", "li", function() {
+	    var varName = $(this).html();
+	    $('#write').append(varName);
+	});
+	
+	$('.funcDisp').on("click", "li", function() {
+	    var funcName = $(this).html();
+	    $('#write').append(funcName);
+	});
+	
 	//if condition
 	$('#condDecif').click(function() {
 		var ifclicks = $(this).data('ifclicks');
 		if (ifclicks) {
-			$('#write').append(')	{');
+			$('#write').append(') {');
 		} else {
-			$('#write').append('\nif(');
+			$('#write').append('\nif (');
 		}
 		$(this).data("ifclicks", !ifclicks);
 		$('#condDecElsIf').show();
@@ -110,10 +126,31 @@ $(function() {
 	
 	//else condition
 	$('#condDecEls').click(function() {
-		$('#write').append('else	{');
+		$('#write').append('\nelse	{');
 		$('#condDecEls').hide();
 	});
 	
+	//while loop
+	$('#condLoopWhi').click(function() {
+		var whiclicks = $(this).data('whiclicks');
+		if (whiclicks) {
+			$('#write').append(') {');
+		} else {
+			$('#write').append('\nwhile (');
+		}
+		$(this).data("whiclicks", !whiclicks);
+	});
+
+	//do while loop
+	$('#condLoopDoWhi').click(function() {
+		var dowhiclicks = $(this).data('dowhiclicks');
+		if (dowhiclicks) {
+			$('#write').append('\n} while(');
+		} else {
+			$('#write').append('\ndo {');
+		}
+		$(this).data("dowhiclicks", !dowhiclicks);
+	});
 	/*
 	 * $("#save").click(function() { var name =
 	 * document.getElementById("write"); var s = name.value; arr.push(s);

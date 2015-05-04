@@ -9,10 +9,13 @@
 <script type="text/javascript" src="js/application.js"></script>
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="js/keyboard.js"></script>
 <script type="text/javascript" src="js/typefeatures.js"></script>
 <link rel="stylesheet" type="text/css" href="css/keypad.css">
 <link rel="stylesheet" type="text/css" href="css/indexStyle.css">
+<link rel="stylesheet" type="text/css" href="css/login_reg_style.css">
 <title>TouchJDE New Class</title>
 </head>
 <body>
@@ -28,6 +31,7 @@
 		if (className == null) {
 			className = "Main";
 		}
+		String user = (String) session.getAttribute("username");
 	%>
 	<center>
 		<form action="insert.action" method="POST" name="codeForm"
@@ -50,14 +54,18 @@
 					<li class="symbol" id="semicol"><span class="off">;</span></li>
 					<li class="delete lastitem">delete</li>
 					<li class="finish">Finish</li>
+					<li class="comm">Comment</li>
 					<li class="newline">New Line</li>
 					<li class="main">Main</li>
 					<li class="decl">Var Decl</li>
 					<li class="coll">Coll Decl</li>
 					<li class="methdecl">Func Decl</li>
-					<li class="conds1">Decision</li>
-					<li class="conds2">Looping</li>
-					<li class="syso">Print</li>
+					<li class="conds1 lastitem">Decision<br />Conds
+					</li>
+					<li class="conds2">Looping<br />Conds
+					</li>
+					<li class="syso">Print<br />(syso)
+					</li>
 					<li class="sym">+</li>
 					<li class="sym">-</li>
 					<li class="sym">*</li>
@@ -93,6 +101,9 @@
 					<li class="condDec" id="condDecElsIf">else if</li>
 					<li class="condDec" id="condDecEls">else</li>
 					<li class="condDec" id="condDecswitch">switch</li>
+					<li class="condLoop" id="condLoopWhi">while</li>
+					<li class="condLoop" id="condLoopDoWhi">do while</li>
+					<li class="condLoop" id="condLoopFor">for</li>
 				</ul>
 				<ul id="loopsKeypad">
 					<li class=""></li>
@@ -106,10 +117,16 @@
 				type="hidden" name="cls" value="${cls}" />
 		</form>
 		<div class="varDisplay">
-			<ul id="keyboard">
+			<ul id="keyboard" class="varDisp">
+			</ul>
+		</div>
+		<div class="funcDisplay">
+			<ul id="keyboard" class="funcDisp">
 			</ul>
 		</div>
 		<div id="compileResult" class="compileRes"></div>
 	</center>
+	<a class="back"
+			href="/touchJDE/logout.action">Logout <%=user%></a>
 </body>
 </html>

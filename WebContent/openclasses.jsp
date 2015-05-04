@@ -15,12 +15,14 @@
 <script type="text/javascript" src="js/typefeatures.js"></script>
 <link rel="stylesheet" type="text/css" href="css/keypad.css">
 <link rel="stylesheet" type="text/css" href="css/indexStyle.css">
+<link rel="stylesheet" type="text/css" href="css/login_reg_style.css">
 <title>Classes</title>
 </head>
 <%
 	String server = ReadProperties.getInstance().getValue("DATABASE_SERVER");
 	String username = ReadProperties.getInstance().getValue("DATABASE_USERNAME");
 	String password = ReadProperties.getInstance().getValue("DATABASE_PASSWORD");
+	String user = (String) session.getAttribute("username");
 %>
 <body>
 	<p>Classes</p>
@@ -32,19 +34,14 @@
 SELECT * from classstore;
 	</sql:query>
 	<%-- <jsp:useBean id="map" class="java.util.HashMap" scope="request"/> --%>
-	<c:forEach var="row" items="${result.rows}">
-<ul>
-  <a href="save.action?classname=${row.classData}"><li><c:out value="${row.className}"/></li></a>
+<c:forEach var="row" items="${result.rows}">
+<form method="post" action="save.action?classname=${row.classData}">
+	<input type="submit" value="${row.className}"/><c:out value="${row.className}"/>
+  <a href="save.action?classname=${row.classData}" id="saveLink"><c:out value="${row.className}"/></a>
 <%-- <c:set target="${map}" property="${row.login}" value="${row.login}"/>  --%>
-</ul>
+</form>
 </c:forEach>
-<script>
-function call(id) {
-	alert(id);
-	//window.location.href = "openedclass.jsp";
-	var value = id;
-	//document.getElementById("write").val("");
-}
-</script>
+<a class="back"
+			href="/touchJDE/logout.action">Logout <%=user%></a>
 </body>
 </html>

@@ -81,6 +81,7 @@ input[type=text] {
 
 #content {
 	height: auto;
+	font-size: large;
 }
 
 #footer {
@@ -254,4 +255,8 @@ a {
 	border: 1px solid #cccccc;
 	font-size: 13px;
 	font: normal normal bold 20px "Courier New", Courier, monospace;
+}
+
+#projName, #projNameLabel, #projSelect, #pkgName, #pkgNameLabel, #pkgSelect {
+	display: none;
 }
