@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.properties;
+package cse6324.uta.edu.properties;
 
 import java.io.IOException;
 import java.util.Properties;

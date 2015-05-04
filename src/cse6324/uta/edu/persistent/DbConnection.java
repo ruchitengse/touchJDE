@@ -1,8 +1,9 @@
-package cse6324.uta.edu;
+package cse6324.uta.edu.persistent;
 
 import java.sql.*;
 import java.util.Random;
-import com.rdbms.Database;
+
+import cse6324.uta.edu.properties.Database;
 
 public class DbConnection {
 	

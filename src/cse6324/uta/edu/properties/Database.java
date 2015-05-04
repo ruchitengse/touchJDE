@@ -1,10 +1,8 @@
-package com.rdbms;
+package cse6324.uta.edu.properties;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
-import com.properties.ReadProperties;
 
 public class Database {
 

@@ -1,11 +1,12 @@
-package com.web.servlet;
+package cse6324.uta.edu.compile;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import com.properties.ReadProperties;
+
+import cse6324.uta.edu.properties.ReadProperties;
 
 
 public class JavaCompile {
