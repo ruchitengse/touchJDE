@@ -73,6 +73,9 @@ public class ControllerServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String saveClsName = request.getParameter("classname");
+		saveClsName = saveClsName.replaceAll("<CARRIAGERETURN>", "\r");
+		saveClsName = saveClsName.replaceAll("<NEWLINE>", "\n");
+		saveClsName = saveClsName.replaceAll("<TAB>", "\t");
 		System.out.println(saveClsName);
 		request.setAttribute("created", saveClsName);
 		request.getRequestDispatcher("openedclass.jsp").forward(request,
@@ -84,6 +87,9 @@ public class ControllerServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String insertCls = request.getParameter("create");
+		insertCls = insertCls.replaceAll("\r", "<CARRIAGERETURN>");
+		insertCls = insertCls.replaceAll("\n", "<NEWLINE>");
+		insertCls = insertCls.replaceAll("\t", "<TAB>");
 		String cls = request.getParameter("cls");
 		System.out.println("insert: " + insertCls);
 		System.out.println("insert: " + cls);
