@@ -87,14 +87,10 @@ public class JavaCompile {
 			try {
 				String filePath = javaFilePath + System.getProperty("file.separator") + className + ".java";
 				f = new File(filePath);
-				if(f.exists()){
-					fileCreated = false;
-				} else {
-					FileWriter fw = new FileWriter(f);
-					fw.write(javaCode);
-					fw.close();
-					fileCreated = true;
-				}
+				FileWriter fw = new FileWriter(f);
+				fw.write(javaCode);
+				fw.close();
+				fileCreated = true;
 			} catch(IOException e){
 				e.printStackTrace();
 				fileCreated = false;
