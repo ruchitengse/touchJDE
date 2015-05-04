@@ -1,7 +1,7 @@
 <!-- References: http://code.tutsplus.com/tutorials/creating-a-keyboard-with-css-and-jquery--net-5774 -->
 <!-- Team 4: CSE6324 -->
 <!-- Stored in the repository: https://github.com/jaggi-sg/touchJDE -->
-<%@page import="com.properties.ReadProperties"%>
+<%@page import="cse6324.uta.edu.properties.ReadProperties"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>

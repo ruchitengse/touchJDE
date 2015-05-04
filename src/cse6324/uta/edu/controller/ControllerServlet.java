@@ -132,7 +132,7 @@ public class ControllerServlet extends HttpServlet {
 			// Set some attribute values to the session
 			// In this case user and password from the request and client
 			session.setAttribute("username", username);
-			//session.setAttribute("password", password);
+			// session.setAttribute("password", password);
 			System.out.println("SESS:" + session.getAttribute("username"));
 			request.getRequestDispatcher("index.jsp")
 					.forward(request, response);
@@ -162,14 +162,13 @@ public class ControllerServlet extends HttpServlet {
 		}
 	}
 
-	//Logout for user
+	// Logout for user
 	private void doGetLogOutAction(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		session.invalidate();
-		request.getRequestDispatcher("login.jsp").forward(request,
-				response);
+		request.getRequestDispatcher("login.jsp").forward(request, response);
 	}
 
 }

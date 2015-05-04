@@ -12,7 +12,7 @@
   </welcome-file-list>
   <servlet>
   <servlet-name>CompileProgram</servlet-name>
-  <servlet-class>com.web.servlet.CompileProgram</servlet-class>
+  <servlet-class>cse6324.uta.edu.compile.CompileProgram</servlet-class>
   </servlet>
   <servlet-mapping>
   <servlet-name>CompileProgram</servlet-name>
@@ -20,7 +20,7 @@
   </servlet-mapping>
   <servlet>
   <servlet-name>ControllerServlet</servlet-name>
-  <servlet-class>cse6324.uta.edu.ControllerServlet</servlet-class>
+  <servlet-class>cse6324.uta.edu.controller.ControllerServlet</servlet-class>
   </servlet>
   <servlet-mapping>
   <servlet-name>ControllerServlet</servlet-name>
