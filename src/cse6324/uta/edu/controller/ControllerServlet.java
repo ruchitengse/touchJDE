@@ -36,9 +36,6 @@ public class ControllerServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String uri = request.getRequestURI();
-		if (uri.contains("save.action")) {
-			doGetSaveAction(request, response);
-		}
 		if (uri.contains("logout.action")) {
 			doGetLogOutAction(request, response);
 		}
@@ -65,9 +62,12 @@ public class ControllerServlet extends HttpServlet {
 		if (uri.contains("register.action")) {
 			doPostRegisterAction(request, response);
 		}
+		if (uri.contains("save.action")) {
+			doGetSaveAction(request, response);
+		}
 	}
 
-	//Open save class
+	// Open save class
 	private void doGetSaveAction(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -82,23 +82,35 @@ public class ControllerServlet extends HttpServlet {
 		System.out.println("open: " + request.getAttribute("created"));
 	}
 
-	//Save class from web page to database
+	// Save class from web page to database
 	private void doPostInsertAction(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String insertCls = request.getParameter("create");
-		insertCls = insertCls.replaceAll("\r", "<CARRIAGERETURN>");
-		insertCls = insertCls.replaceAll("\n", "<NEWLINE>");
-		insertCls = insertCls.replaceAll("\t", "<TAB>");
+		HttpSession session = request.getSession(true);
+		String username = (String) session.getAttribute("username");
+		String classData = request.getParameter("create");
+		//String username = request.getParameter("username");
+		String projectName = request.getParameter("projectName");
+		String className = request.getParameter("className");
+		String packageName = request.getParameter("packageName");
+		classData = classData.replaceAll("\r", "<CARRIAGERETURN>");
+		classData = classData.replaceAll("\n", "<NEWLINE>");
+		classData = classData.replaceAll("\t", "<TAB>");
 		String cls = request.getParameter("cls");
-		System.out.println("insert: " + insertCls);
-		System.out.println("insert: " + cls);
+		System.out.println("insert classData: " + classData);
+		System.out.println("insert cls: " + cls);
+		System.out.println("insert username: " + username);
+		System.out.println("insert clsName: " + className);
+		System.out.println("insert projName: " + projectName);
+		System.out.println("insert pkgName: " + packageName);
 		// DbConnection db = new DbConnection();
-		DbConnection.insert(cls, insertCls);
+		DbConnection.insertProject(username, projectName, packageName,
+				className, classData);
+		// DbConnection.insert(cls, insertCls);
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
-	//Create package name & class name on create button click
+	// Create package name & class name on create button click
 	private void doPostCreateAction(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -108,16 +120,33 @@ public class ControllerServlet extends HttpServlet {
 		String projSelect = request.getParameter("projSelect");
 		String pkgName = request.getParameter("pkgName");
 		String pkgSelect = request.getParameter("pkgSelect");
+		
+		//System.out.println("create username: " + username);
+		System.out.println("create clsName: " + clsName);
+		System.out.println("create projName: " + projName);
+		System.out.println("create pkgName: " + pkgName);
 		System.out
 				.println(clsName + "|pkgname: " + pkgName + "|pkgS: "
 						+ pkgSelect + "|projNam: " + projName + "|projS: "
 						+ projSelect);
 		if (pkgName != null) {
-			request.setAttribute("create", "package " + pkgName + ";\n"
-					+ "public class " + clsName + " {");
+			request.getSession().setAttribute(
+					"create",
+					"package " + pkgName + ";\n" + "public class " + clsName
+							+ " {");
+			request.getSession().setAttribute("packageName", pkgName);
 		} else if (pkgSelect != null) {
-			request.setAttribute("create", "package " + pkgSelect + ";\n"
-					+ "public class " + clsName + " {");
+			request.getSession().setAttribute(
+					"create",
+					"package " + pkgSelect + ";\n" + "public class " + clsName
+							+ " {");
+			request.getSession().setAttribute("packageName", pkgSelect);
+		}
+
+		if (projName != null) {
+			request.getSession().setAttribute("projectName", projName);
+		} else if (projSelect != null) {
+			request.getSession().setAttribute("projectName", projSelect);
 		}
 		request.setAttribute("cls", clsName);
 		request.getRequestDispatcher("newclass.jsp").forward(request, response);
@@ -125,7 +154,7 @@ public class ControllerServlet extends HttpServlet {
 		// out.print("Here");
 	}
 
-	//Login of user
+	// Login of user
 	private void doPostLoginAction(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -150,7 +179,7 @@ public class ControllerServlet extends HttpServlet {
 		}
 	}
 
-	//Register of user
+	// Register of user
 	private void doPostRegisterAction(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

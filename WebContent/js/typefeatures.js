@@ -194,9 +194,11 @@ $(function() {
 		}
 		$(this).data("caseclicks", !caseclicks);
 	});
-
 	$('#swiBreak').click(function() {
 		$('#write').append('	break;\n');
+	});
+	$('#swiDefault').click(function() {
+		$('#write').append('	default:\n');
 	});
 	/* Switch Case end */
 

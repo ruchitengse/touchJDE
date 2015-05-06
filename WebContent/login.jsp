@@ -33,16 +33,13 @@ Login page of the application
 					<h3>Register</h3>
 					<div class="column">
 						<div>
-							<label>Username:</label> <input type="text" /> <span
-								class="error">This is an error</span>
+							<label>Username:</label> <input type="text" /> 
 						</div>
 						<div>
-							<label>Email:</label> <input type="text" /> <span class="error">This
-								is an error</span>
+							<label>Email:</label> <input type="text" /> 
 						</div>
 						<div>
-							<label>Password:</label> <input type="password" /> <span
-								class="error">This is an error</span>
+							<label>Password:</label> <input type="password" /> 
 						</div>
 					</div>
 					<div class="bottom">

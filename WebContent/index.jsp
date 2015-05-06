@@ -9,6 +9,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<%
+	String user = (String) session.getAttribute("username");
+	if(user == null || user.equals(0)){
+		request.getRequestDispatcher("login.jsp").forward(request, response);
+}
+%>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>TouchJDE</title>
 </head>
@@ -28,7 +34,6 @@
 				"DATABASE_USERNAME");
 		String password = ReadProperties.getInstance().getValue(
 				"DATABASE_PASSWORD");
-		String user = (String) session.getAttribute("username");
 	%>
 	<div id="header">
 		touch<b>JDE</b>
@@ -42,7 +47,7 @@
 			onclick="alert('Open');">
 			Open<br />created classes
 		</button> -->
-		<a class="btn btn-1" href="openclasses.jsp"> Open<br />created
+		<a class="btn btn-1" href="openclassesfromproject.jsp"> Open<br />created
 			classes
 		</a> <a class="btn" href="#openModal"> Create<br />class
 		</a>
@@ -60,8 +65,8 @@
 				<a href="#close" title="Close" class="close">X</a>
 				<form action="create.action" method="post" id="formData">
 					<br />
-					<button id="newProj">Create new project</button>
-					<button id="oldProj">Add to existing project</button>
+					<button class="btn-2" id="newProj">Create new project</button>
+					<button class="btn-2" id="oldProj">Add to existing project</button>
 					<h3>
 						<span id="projNameLabel"><label>Enter Project Name:</label><br /></span>
 					</h3>
@@ -71,8 +76,8 @@
 							<option value="${row.proj_name}">${row.proj_name}</option>
 						</c:forEach>
 					</select><br />
-					<button id="newPkg">Create new Package</button>
-					<button id="oldPkg">Add to existing Package</button>
+					<button class="btn-2" id="newPkg">Create new Package</button>
+					<button class="btn-2" id="oldPkg">Add to existing Package</button>
 					<h3>
 						<span id="pkgNameLabel"><label>Enter Package Name:</label><br />
 							<h5>(Example: com.package.example)</h5></span>

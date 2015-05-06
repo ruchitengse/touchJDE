@@ -10,8 +10,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<%
+	String username = (String) session.getAttribute("username");
+	if(username == null || username.equals(0)){
+		request.getRequestDispatcher("login.jsp").forward(request, response);
+}
+%>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<script type="text/javascript" src="js/application.js"></script>
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript"
@@ -32,15 +37,17 @@
 	</div>
 	<jsp:include page="keypad.jsp"></jsp:include>
 	<%
-		String className = (String) request.getAttribute("cls");
-			if (className == null) {
-		className = "Main";
-			}
-			String user = (String) session.getAttribute("username");
+		String projectName = (String) request.getSession().getAttribute("projectName");
+		String packageName = (String) request.getSession().getAttribute("packageName");
+		String className = (String) request.getSession().getAttribute("clsName");
+		String user = (String) request.getSession().getAttribute("username");
 	%>
 	<center>
 		<form action="insert.action" method="POST" name="codeForm"
 			id="codeForm">
+			<input type="hidden" value=<%=user %> name="username"/>
+			<input type="hidden" value=<%=projectName %> name="projectName"/>
+			<input type="hidden" value=<%=packageName %> name="packageName"/>
 			<input type="hidden" value="<%=className%>" name="className" />
 			<div id="container">
 				<div class="canvas">Your Coding Canvas:</div>
@@ -117,9 +124,9 @@
 					<li class="condLoop" id="forInc">for Inc</li>
 				</ul>
 			</div>
-			<br> <br> <input type="button" class="button"
+			<br> <br> <input type="button" class="btn-3"
 				name="submitbutton" id="submitbutton" value="Compile and Run Code" />
-			<input type="submit" class="button" value="Save Class" /> <input
+			<input type="submit" class="btn-3" value="Save Class" /> <input
 				type="hidden" name="cls" value="${cls}" />
 		</form>
 		<div class="varDisplay">
