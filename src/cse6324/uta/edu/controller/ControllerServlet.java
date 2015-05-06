@@ -36,6 +36,9 @@ public class ControllerServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String uri = request.getRequestURI();
+		if (uri.contains("save.action")) {
+			doGetSaveAction(request, response);
+		}
 		if (uri.contains("logout.action")) {
 			doGetLogOutAction(request, response);
 		}
@@ -49,10 +52,6 @@ public class ControllerServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String uri = request.getRequestURI();
-
-		if (uri.contains("save.action")) {
-			doGetSaveAction(request, response);
-		}
 		if (uri.contains("create.action")) {
 			doPostCreateAction(request, response);
 		}
@@ -68,7 +67,7 @@ public class ControllerServlet extends HttpServlet {
 		}
 	}
 
-	//
+	//Open save class
 	private void doGetSaveAction(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -83,6 +82,7 @@ public class ControllerServlet extends HttpServlet {
 		System.out.println("open: " + request.getAttribute("created"));
 	}
 
+	//Save class from web page to database
 	private void doPostInsertAction(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -95,10 +95,10 @@ public class ControllerServlet extends HttpServlet {
 		System.out.println("insert: " + cls);
 		// DbConnection db = new DbConnection();
 		DbConnection.insert(cls, insertCls);
-		// request.getRequestDispatcher("newclass.jsp").forward(request,
-		// response);
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
+	//Create package name & class name on create button click
 	private void doPostCreateAction(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -125,6 +125,7 @@ public class ControllerServlet extends HttpServlet {
 		// out.print("Here");
 	}
 
+	//Login of user
 	private void doPostLoginAction(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -149,6 +150,7 @@ public class ControllerServlet extends HttpServlet {
 		}
 	}
 
+	//Register of user
 	private void doPostRegisterAction(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -176,5 +178,4 @@ public class ControllerServlet extends HttpServlet {
 		session.invalidate();
 		request.getRequestDispatcher("login.jsp").forward(request, response);
 	}
-
 }

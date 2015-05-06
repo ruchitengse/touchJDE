@@ -1,3 +1,4 @@
+<!-- Aplhabetic keypad -->
 <div id="content">
 		<div id="chrDiv">
 			<ul id="keyboard">

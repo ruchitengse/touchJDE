@@ -3,7 +3,10 @@ package cse6324.uta.edu.properties;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+/**
+*
+* //Storing the properties of the database
+*/
 public class Database {
 
 	private static Connection connection = null;

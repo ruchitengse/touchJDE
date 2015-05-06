@@ -15,7 +15,6 @@
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script type="text/javascript" src="js/application.js"></script>
 <script type="text/javascript" src="js/keyboard.js"></script>
 <script type="text/javascript" src="js/typefeatures.js"></script>
 <link rel="stylesheet" type="text/css" href="css/keypad.css">
@@ -57,7 +56,7 @@
 		</sql:query>
 		<div id="openModal" class="modalDialog">
 			<div>
-				<!-- <p>Enter Class details to create:</p> -->
+				<!-- Form to enter class details on creation -->
 				<a href="#close" title="Close" class="close">X</a>
 				<form action="create.action" method="post" id="formData">
 					<br />
@@ -84,27 +83,20 @@
 							<option value="${row.pkg_name}">${row.pkg_name}</option>
 						</c:forEach>
 					</select><br />
-					<!-- <h3>
-						<label>Enter Package Name:</label>
-					</h3>
-					<h5>(Example: com.package.example)</h5>
-					<input type="text" id="pkgName" size="50" name="pkgName" required /><br />
-					<br /> -->
 					<h3>
 						<label>Enter Class Name:</label>
 					</h3>
 					<h5>(Example: TestClassExample)</h5>
 					<input type="text" id="clsName" size="50" name="clsName" required
 						pattern="^[A-Z]([a-z]*[A-Z]?[A-Za-z]*)"
-						title="Enter correct format" /><br /> <br />
-						<input type="submit" name="createCls" value="Create" class="btn btn-2" />
+						title="Enter correct format" /><br /> <br /> <input
+						type="submit" name="createCls" value="Create" class="btn btn-2" />
 				</form>
 			</div>
 		</div>
 	</div>
 	<div id="footer">TouchJDE - 2015 Developed @ UTA</div>
-	<a class="back"
-			href="/touchJDE/logout.action">Logout <%=user%></a>
+	<a class="back" href="/touchJDE/logout.action">Logout <%=user%></a>
 </body>
 <script type="text/javascript">
 	$(function() {
@@ -135,9 +127,9 @@
 			$("#pkgName").hide();
 		});
 	});
-	$("form :input").change(function(){
-		   console.log($("form").serialize());
-		});
+	$("form :input").change(function() {
+		console.log($("form").serialize());
+	});
 </script>
 
 </html>

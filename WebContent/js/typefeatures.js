@@ -1,3 +1,6 @@
+/*References: http://code.tutsplus.com/tutorials/creating-a-keyboard-with-css-and-jquery--net-5774
+ */
+/*----Javascript file to handle the button events from the on-screen keyboard----*/
 $(function() {
 	$('.symbol').click(function() {
 		$('.sym').show();
@@ -42,10 +45,15 @@ $(function() {
 	$('.metCreate').click(function() {
 		$('.metEnd').show();
 	});
-	/*
-	 * $('.syso').click(function() { $('#write').append('System.Out.Println(');
-	 * });
-	 */
+
+	$('.metAccMod').click(function() {
+		$('#write').append("\n" + $(this).html() + " ");
+	});
+
+	$('.metRet').click(function() {
+		$('#write').append($(this).html() + " ");
+	});
+
 	$('.syso').after('<br/><br/><br/>');
 	$('.newline').after('<br/><br/><br/>');
 	$('#gt').after('<br/><br/><br/>');
@@ -65,15 +73,21 @@ $(function() {
 			$('.metRet').show();
 		});
 	}
-	//Decision Conditions click
+	// Decision Conditions click
 	$('.conds1').click(function() {
 		$('.condDec').show();
 		$('#condDecElsIf').hide();
 		$('#condDecEls').hide();
+		$('#swiCase').hide();
+		$('#swiBreak').hide();
 	});
-	//Looping Conditions click
+	// Looping Conditions click
 	$('.conds2').click(function() {
 		$('.condLoop').show();
+		$('#forIni').hide();
+		$('#forTer').hide();
+		$('#forInc').hide();
+
 	});
 	$('.finish').click(function() {
 		/* $('#write').append("\n}"); */
@@ -84,23 +98,24 @@ $(function() {
 		if (clicks) {
 			$('#write').append(');');
 		} else {
-			$('#write').append('\nSystem.out.println(');
+			$('#write').append('System.out.println(');
 		}
 		$(this).data("clicks", !clicks);
 	});
-	
-	//Display stored variables for further usage
+
+	// Display stored variables for further usage
 	$('.varDisp').on("click", "li", function() {
-	    var varName = $(this).html();
-	    $('#write').append(varName);
+		var varName = $(this).html();
+		$('#write').append(varName);
 	});
-	
+
+	// Display stored function names for further usage
 	$('.funcDisp').on("click", "li", function() {
-	    var funcName = $(this).html();
-	    $('#write').append(funcName);
+		var funcName = $(this).html();
+		$('#write').append(funcName + "();");
 	});
-	
-	//if condition
+
+	// if condition
 	$('#condDecif').click(function() {
 		var ifclicks = $(this).data('ifclicks');
 		if (ifclicks) {
@@ -113,24 +128,24 @@ $(function() {
 		$('#condDecEls').show();
 	});
 
-	//else if condition
+	// else if condition
 	$('#condDecElsIf').click(function() {
 		var elsifclicks = $(this).data('elsifclicks');
 		if (elsifclicks) {
 			$('#write').append(')	{\n');
 		} else {
-			$('#write').append('\nelse if(');
+			$('#write').append('\nelse if (');
 		}
 		$(this).data("elsifclicks", !elsifclicks);
 	});
-	
-	//else condition
+
+	// else condition
 	$('#condDecEls').click(function() {
 		$('#write').append('\nelse	{');
 		$('#condDecEls').hide();
 	});
-	
-	//while loop
+
+	// while loop
 	$('#condLoopWhi').click(function() {
 		var whiclicks = $(this).data('whiclicks');
 		if (whiclicks) {
@@ -141,7 +156,7 @@ $(function() {
 		$(this).data("whiclicks", !whiclicks);
 	});
 
-	//do while loop
+	// do while loop
 	$('#condLoopDoWhi').click(function() {
 		var dowhiclicks = $(this).data('dowhiclicks');
 		if (dowhiclicks) {
@@ -151,23 +166,69 @@ $(function() {
 		}
 		$(this).data("dowhiclicks", !dowhiclicks);
 	});
+	/* Switch Case start */
+	$('#condDecswitch').click(function() {
+		$('#swiCase').show();
+		$('#swiBreak').show();
+		$('#swiDefault').show();
+		var switchclicks = $(this).data('switchclicks');
+		if (switchclicks) {
+			$('#write').append(') {');
+		} else {
+			$('#write').append('switch(');
+		}
+		$(this).data("switchclicks", !switchclicks);
+	});
 	/*
-	 * $("#save").click(function() { var name =
-	 * document.getElementById("write"); var s = name.value; arr.push(s);
-	 * alert(arr); });
+	 * $('#condDecswitch').click(function() { var switchclicks =
+	 * $(this).data('switchclicks'); if (caseclicks) { $('#write').append(')
+	 * {'); } else { $('#write').append('\nswitch( '); }
+	 * $(this).data("switchclicks", !switchclicks); });
 	 */
-	$('#save').click(function() {
+	$('#swiCase').click(function() {
+		var caseclicks = $(this).data('caseclicks');
+		if (caseclicks) {
+			$('#write').append(' :\n');
+		} else {
+			$('#write').append('\ncase ');
+		}
+		$(this).data("caseclicks", !caseclicks);
+	});
 
+	$('#swiBreak').click(function() {
+		$('#write').append('	break;\n');
+	});
+	/* Switch Case end */
+
+	/* for Start */
+	$('#condLoopFor').click(function() {
+		$('#forIni').show();
+		$('#forTer').show();
+		$('#forInc').show();
+	});
+	$('#forIni').click(function() {
+		var forIniclicks = $(this).data('forIniclicks');
+		if (forIniclicks) {
+			$('#write').append(';');
+		} else {
+			$('#write').append('for(');
+		}
+		$(this).data("forIniclicks", !forIniclicks);
+	});
+	$('#forTer').click(function() {
+		$('#write').append(';');
+	});
+	$('#forInc').click(function() {
+		$('#write').append(') {');
+	});
+	/* for end */
+	$('#save').click(function() {
 		if (window.sessionStorage) {
 			sessionStorage.setItem("saveClass", $('#write').val());
-			/*
-			 * setTimeout(function() {
-			 * //window.location.replace("http://jsfiddle.net/chauhangs/AfhGR/1/show"); },
-			 * 500);
-			 */
 			alert(sessionStorage.getItem("saveClass"));
 		}
 	});
+
 	$("a[name='openClass']").click(function() {
 		// if (sessionStorage.getItem("saveClass") != "") {
 		// e.preventDefault();
@@ -176,6 +237,7 @@ $(function() {
 		$('#write').text(sessionStorage.getItem("saveClass"));
 		// }
 	});
+	// Alphabets screenpad display
 	$('.alpBtn').click(function() {
 		var options = {
 			direction : 'left',
@@ -183,8 +245,4 @@ $(function() {
 		var duration = 500;
 		$('#chrDiv').toggle(options, duration);
 	});
-	/*
-	 * for (var i = 0; i < sessionStorage.length; i++) {
-	 * console.log(sessionStorage.key(i))  };
-	 */
 });

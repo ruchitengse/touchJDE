@@ -1,5 +1,7 @@
 <!-- References: http://code.tutsplus.com/tutorials/creating-a-keyboard-with-css-and-jquery--net-5774 -->
 <!-- Stored in the repository: https://github.com/jaggi-sg/touchJDE -->
+
+<!-- ***The Class displayed when user clicks on any class displayed from list of 'Open Existing Classes'*** -->
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -98,7 +100,6 @@
 		</ul>
 	</div>
 	<button id="save" class="button">Save</button>
-	<a class="back"
-			href="/touchJDE/logout.action">Logout <%=user%></a>
+	<a class="back" href="/touchJDE/logout.action">Logout <%=user%></a>
 </body>
 </html>

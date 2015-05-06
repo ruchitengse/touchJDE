@@ -4,7 +4,10 @@ import java.sql.*;
 import java.util.Random;
 
 import cse6324.uta.edu.properties.Database;
-
+/**
+*
+* Persistent class for handling database operations
+*/
 public class DbConnection {
 	
 	public static Connection connection = null;
@@ -12,6 +15,7 @@ public class DbConnection {
 	public static PreparedStatement preparedStmt = null;
 	public static ResultSet rs = null;
 
+	//Insert class from web page to database
 	public static void insert(String cls, String insertCls) {
 		try {
 			// stmt = conn.createStatement();
@@ -265,8 +269,4 @@ public class DbConnection {
 			}
 		}
 	}
-
-	/*public static void main(String[] args) {
-		DbConnection.insert("user1", "user1");
-	}*/
 }

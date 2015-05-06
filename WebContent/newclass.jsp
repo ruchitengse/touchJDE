@@ -1,5 +1,10 @@
 <!-- References: http://code.tutsplus.com/tutorials/creating-a-keyboard-with-css-and-jquery--net-5774 -->
 <!-- Stored in the repository: https://github.com/jaggi-sg/touchJDE -->
+<!-- 
+**
+*Main page where user enters the code in the code area
+**
+ -->
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -28,10 +33,10 @@
 	<jsp:include page="keypad.jsp"></jsp:include>
 	<%
 		String className = (String) request.getAttribute("cls");
-		if (className == null) {
-			className = "Main";
-		}
-		String user = (String) session.getAttribute("username");
+			if (className == null) {
+		className = "Main";
+			}
+			String user = (String) session.getAttribute("username");
 	%>
 	<center>
 		<form action="insert.action" method="POST" name="codeForm"
@@ -104,11 +109,12 @@
 					<li class="condLoop" id="condLoopWhi">while</li>
 					<li class="condLoop" id="condLoopDoWhi">do while</li>
 					<li class="condLoop" id="condLoopFor">for</li>
-				</ul>
-				<ul id="loopsKeypad">
-					<li class=""></li>
-					<li class=""></li>
-					<li class=""></li>
+					<li class="condDec" id="swiCase">case</li>
+					<li class="condDec" id="swiBreak">break</li>
+					<li class="condDec" id="swiDefault">default</li>
+					<li class="condLoop" id="forIni">for Init</li>
+					<li class="condLoop" id="forTer">for Term</li>
+					<li class="condLoop" id="forInc">for Inc</li>
 				</ul>
 			</div>
 			<br> <br> <input type="button" class="button"
@@ -117,16 +123,17 @@
 				type="hidden" name="cls" value="${cls}" />
 		</form>
 		<div class="varDisplay">
+			<p>Variables Used:</p>
 			<ul id="keyboard" class="varDisp">
 			</ul>
 		</div>
 		<div class="funcDisplay">
+			<p>Functions Used:</p>
 			<ul id="keyboard" class="funcDisp">
 			</ul>
 		</div>
 		<div id="compileResult" class="compileRes"></div>
 	</center>
-	<a class="back"
-			href="/touchJDE/logout.action">Logout <%=user%></a>
+	<a class="back" href="/touchJDE/logout.action">Logout <%=user%></a>
 </body>
 </html>

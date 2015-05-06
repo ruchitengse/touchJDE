@@ -1,3 +1,4 @@
+<!-- ***Displays the list of classes owned by a user*** -->
 <%@page import="cse6324.uta.edu.properties.ReadProperties"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -36,7 +37,7 @@ SELECT * from classstore;
 	<%-- <jsp:useBean id="map" class="java.util.HashMap" scope="request"/> --%>
 <c:forEach var="row" items="${result.rows}">
 <form method="post" action="save.action?classname=${row.classData}">
-	<input type="submit" value="${row.className}"/><c:out value="${row.className}"/>
+	<%-- <input type="submit" value="${row.className}"/><c:out value="${row.className}"/> --%>
   <a href="save.action?classname=${row.classData}" id="saveLink"><c:out value="${row.className}"/></a>
 <%-- <c:set target="${map}" property="${row.login}" value="${row.login}"/>  --%>
 </form>

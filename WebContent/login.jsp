@@ -1,3 +1,8 @@
+<!-- 
+**
+Login page of the application
+ **
+ -->
 <%@ page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -6,26 +11,10 @@
 <head>
 <title>TouchJDE - Your Java Web Environment</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="description"
-	content="Expand, contract, animate forms with jQuery wihtout leaving the page" />
-<meta name="keywords"
-	content="expand, form, css3, jquery, animate, width, height, adapt, unobtrusive javascript" />
-<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
 <link rel="stylesheet" type="text/css" href="css/login_reg_style.css" />
-<!-- <script src="js/cufon-yui.js" type="text/javascript"></script>
-<script src="js/ChunkFive_400.font.js" type="text/javascript"></script> -->
-<script type="text/javascript">
-	Cufon.replace('h1', {
-		textShadow : '1px 1px #fff'
-	});
-	Cufon.replace('h2', {
-		textShadow : '1px 1px #fff'
-	});
-	Cufon.replace('h3', {
-		textShadow : '1px 1px #000'
-	});
-	Cufon.replace('.back');
-</script>
+<link rel="stylesheet" type="text/css" href="css/indexStyle.css" />
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 </head>
 <body>
 	<div class="wrapper">
@@ -61,7 +50,7 @@
 								<input type="checkbox" />
 								<span>Send me updates</span>
 							</div> -->
-						<input type="submit" value="Register" /> <a href="login.html"
+						<input type="submit" value="Register" /> <a href="login.jsp"
 							rel="login" class="linkform">Existing User? Log in here</a>
 						<div class="clear"></div>
 					</div>
@@ -69,50 +58,35 @@
 				<form class="login active" action="login.action" method="post">
 					<h3>Login</h3>
 					<div>
-						<label>Username:</label> <input type="text" name="lusername" /> 
+						<label>Username:</label> <input type="text" name="lusername" />
 					</div>
 					<div>
 						<label>Password: <!-- <a href="forgot_password.html" rel="forgot_password" class="forgot linkform">Forgot your password?</a>  -->
 						</label> <input type="password" name="lpassword" />
 						<%
-					if(((String) request.getAttribute("errorplace")) != null) {
-				%>
+							if (((String) request.getAttribute("errorplace")) != null) {
+						%>
 						<span class="error">Username/Password Incorrect</span>
 						<%
-					}
-				%>
+							}
+						%>
 					</div>
 					<div class="bottom">
-						<input type="submit" value="Login"></input> <a
-							href="register.html" rel="register" class="linkform">New
-							User? Register here</a>
+						<input type="submit" value="Login"></input> <a href="register.jsp"
+							rel="register" class="linkform">New User? Register here</a>
 						<div class="clear"></div>
 					</div>
 				</form>
-				<!--  <form class="forgot_password">
-						<h3>Forgot Password</h3>
-						<div>
-							<label>Username or Email:</label>
-							<input type="text" />
-							<span class="error">This is an error</span>
-						</div>
-						<div class="bottom">
-							<input type="submit" value="Send reminder"></input>
-							<a href="index.html" rel="login" class="linkform">Suddenly remembered? Log in here</a>
-							<a href="register.html" rel="register" class="linkform">You don't have an account? Register here</a>
-							<div class="clear"></div>
-						</div>
-					</form>  -->
 			</div>
 			<div class="clear"></div>
 		</div>
-		<!-- <a class="back"
-			href="http://tympanus.net/codrops/2011/01/06/animated-form-switching/">User
-			Login Here</a> -->
 	</div>
-	<!-- The JavaScript -->
-	<script type="text/javascript"
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<script type="text/javascript">
+		$("form :input").change(function() {
+			console.log($("form").serialize());
+		});
+	</script>
+	<div id="footer">TouchJDE - 2015 Developed @ UTA</div>
 	<script type="text/javascript">
 		$(function() {
 			//the form wrapper (includes all forms)
@@ -136,14 +110,6 @@
 
 			//set width and height of wrapper (same of current form)
 			setWrapperWidth();
-
-			/*
-			clicking a link (change form event) in the form
-			makes the current form hide.
-			The wrapper animates its width and height to the 
-			width and height of the new current form.
-			After the animation, the new form is shown
-			 */
 			$linkform.bind('click', function(e) {
 				var $link = $(this);
 				var target = $link.attr('rel');
@@ -172,21 +138,7 @@
 					height : $currentForm.data('height') + 'px'
 				});
 			}
-
-			/*
-			for the demo we disabled the submit buttons
-			if you submit the form, you need to check the 
-			which form was submited, and give the class active 
-			to the form you want to show
-			 */
-			/* $form_wrapper.find('input[type="submit"]').click(function(e) {
-				e.preventDefault();
-			}); */
-		});
-		$("form :input").change(function() {
-			console.log($("form").serialize());
 		});
 	</script>
-	<footer>Footer Here</footer>
 </body>
 </html>

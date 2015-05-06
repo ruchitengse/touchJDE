@@ -1,18 +1,7 @@
 /*References: http://code.tutsplus.com/tutorials/creating-a-keyboard-with-css-and-jquery--net-5774
  */
-//var clsName;
+/*----Javascript file to handle all On-screen keypad events----*/
 $(function() {
-	// alert($('#clsName').val());
-	/*
-	 * $("#formData").submit(function(e) { //e.preventDefault(); clsName =
-	 * $(this).find('input[id=clsName]').val(); console.log(clsName);
-	 * alert(clsName); });
-	 */
-	/*
-	 * alert($('#clsName').html()); var pkgName = $('#pkgName').val();
-	 * $write.append("package "+pkgName+";\n"); $write.append("public class
-	 * "+clsName+" {\n");
-	 */
 	var $write = $('#write'), shift = false, capslock = false;
 	if (!$('.openedWrite')) {
 		$write.append("\npublic static void main(String[] args)\n");
@@ -78,6 +67,8 @@ $(function() {
 						|| $this.hasClass('accMod')
 						|| $this.hasClass('retType')
 						|| $this.hasClass('metCreate')
+						|| $this.hasClass('metRet')
+						|| $this.hasClass('metAccMod')
 						|| $this.hasClass('conds1') || $this.hasClass('conds2')
 						|| $this.hasClass('condDec')
 						|| $this.hasClass('condLoop')) {
@@ -93,26 +84,22 @@ $(function() {
 				if ($this.hasClass('main')) {
 					character = '\npublic static void main(String[] args) {\n';
 				}
-				/*
-				 * if ($this.hasClass('syso')) { character =
-				 * 'System.Out.Println('; }
-				 */
-
+				//Store variable & display as button when created	
 				if ($this.hasClass('varstore')) {
 					var x = Math.floor((Math.random() * 100) + 1);
 					varName = 'var' + x;
 					varDecl = varName + "=";
-					character = varDecl;
+					character = " " + varDecl;
 					$('.varDisplay #keyboard').append(
 							"<li class='varList'>"
 									+ varName + "</li>");
 				}
-
+				//Store method & display as button when created	
 				if ($this.hasClass('metCreate')) {
 					var x = Math.floor((Math.random() * 10) + 1);
 					var funcName = "func" + x;
 					var open = funcName + "()" + "\n	{";
-					character = open + "\n		";
+					character = open + "	";
 					$('.funcDisplay #keyboard').append(
 							"<li class='funcList'>"
 									+ funcName + "</li>");
@@ -122,14 +109,11 @@ $(function() {
 					character = '\n }';
 				}
 
-				/*
-				 * if ($this.hasClass('symbol')) { $('.on').show(); }
-				 */
 				// Add the character
 				$write.html($write.html() + character);
 			});
 });
-
+/* ----Handles the code in user input area for compilation & execution---- */
 $(function() {
 	$('#submitbutton').click(
 			function() {
