@@ -53,15 +53,30 @@ $(function() {
 	$('.metRet').click(function() {
 		$('#write').append($(this).html() + " ");
 	});
-
+	$('.comm').click(function() {
+		$('#write').append("//");
+	});
+	$('.numpad').click(function() {
+		var numpadclicks = $(this).data('numpadclicks');
+		if (numpadclicks) {
+			$('.symbol').hide();
+		} else {
+			$('.symbol').show();
+		}
+		$(this).data("numpadclicks", !numpadclicks);
+	});
+	$('.numsyms').click(function() {
+		var numsympadclicks = $(this).data('numsympadclicks');
+		if (numsympadclicks) {
+			$('.sym').hide();
+		} else {
+			$('.sym').show();
+		}
+		$(this).data("numsympadclicks", !numsympadclicks);
+	});
 	$('.syso').after('<br/><br/><br/>');
 	$('.newline').after('<br/><br/><br/>');
 	$('#gt').after('<br/><br/><br/>');
-	if ($('.sym').not(':hidden')) {
-		$('.sym').click(function() {
-			$('.sym').hide();
-		});
-	}
 	if ($('.types').not(':hidden')) {
 		$('.types').click(function() {
 			$('.types').hide();
@@ -75,19 +90,30 @@ $(function() {
 	}
 	// Decision Conditions click
 	$('.conds1').click(function() {
-		$('.condDec').show();
-		$('#condDecElsIf').hide();
-		$('#condDecEls').hide();
-		$('#swiCase').hide();
-		$('#swiBreak').hide();
+		var conclicks = $(this).data('conclicks');
+		if (conclicks) {
+			$('.condDec').hide();
+		} else {
+			$('.condDec').show();
+			$('#condDecElsIf').hide();
+			$('#condDecEls').hide();
+			$('#swiCase').hide();
+			$('#swiBreak').hide();
+		}
+		$(this).data("conclicks", !conclicks);
 	});
 	// Looping Conditions click
 	$('.conds2').click(function() {
-		$('.condLoop').show();
-		$('#forIni').hide();
-		$('#forTer').hide();
-		$('#forInc').hide();
-
+		var condclicks = $(this).data('condclicks');
+		if (condclicks) {
+			$('.condLoop').hide();
+		} else {
+			$('.condLoop').show();
+			$('#forIni').hide();
+			$('#forTer').hide();
+			$('#forInc').hide();
+		}
+		$(this).data("condclicks", !condclicks);
 	});
 	$('.finish').click(function() {
 		/* $('#write').append("\n}"); */

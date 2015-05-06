@@ -53,6 +53,8 @@
 				<div class="canvas">Your Coding Canvas:</div>
 				<textarea id="write" class="codebox" name="create">${create}</textarea>
 				<ul id="keyboard">
+				<li class="numpad">Num Pad</li>
+				<li class="numsyms">Math Symbols</li>
 					<li class="symbol"><span class="off">1</span><span class="on">!</span></li>
 					<li class="symbol"><span class="off">2</span><span class="on">@</span></li>
 					<li class="symbol"><span class="off">3</span><span class="on">#</span></li>
@@ -63,21 +65,7 @@
 					<li class="symbol"><span class="off">8</span><span class="on">*</span></li>
 					<li class="symbol"><span class="off">9</span><span class="on">(</span></li>
 					<li class="symbol"><span class="off">0</span><span class="on">)</span></li>
-					<li class="symbol" id="semicol"><span class="off">;</span></li>
-					<li class="delete lastitem">delete</li>
-					<li class="finish">Finish</li>
-					<li class="comm">Comment</li>
-					<li class="newline">New Line</li>
-					<li class="main">Main</li>
-					<li class="decl">Var Decl</li>
-					<li class="coll">Coll Decl</li>
-					<li class="methdecl">Func Decl</li>
-					<li class="conds1 lastitem">Decision<br />Conds
-					</li>
-					<li class="conds2">Looping<br />Conds
-					</li>
-					<li class="syso">Print<br />(syso)
-					</li>
+					<li id="semicol"><span class="off">;</span></li>
 					<li class="sym">+</li>
 					<li class="sym">-</li>
 					<li class="sym">*</li>
@@ -88,6 +76,20 @@
 					<li class="sym">=</li>
 					<li class="sym">&#60;</li>
 					<li class="sym" id="gt">&#62;</li>
+					<li class="delete lastitem">delete</li>
+					<li class="finish">Finish</li>
+					<li class="comm">Comment</li>
+					<li class="newline">New Line</li>
+					<li class="main">Main<br/>(PSVM)</li>
+					<li class="decl">Var Decl</li>
+					<li class="coll">Coll Decl</li>
+					<li class="methdecl">Func Decl</li>
+					<li class="conds1 lastitem">Decision<br />Conds
+					</li>
+					<li class="conds2">Looping<br />Conds
+					</li>
+					<li class="syso">Print<br />(syso)
+					</li>
 					<li class="varstore">Store in Var</li>
 					<li class="types">int</li>
 					<li class="types">float</li>
@@ -113,6 +115,7 @@
 					<li class="condDec" id="condDecElsIf">else if</li>
 					<li class="condDec" id="condDecEls">else</li>
 					<li class="condDec" id="condDecswitch">switch</li>
+					<li class="condLoop" id="condLoopIni">Loop Init</li>
 					<li class="condLoop" id="condLoopWhi">while</li>
 					<li class="condLoop" id="condLoopDoWhi">do while</li>
 					<li class="condLoop" id="condLoopFor">for</li>
@@ -124,7 +127,7 @@
 					<li class="condLoop" id="forInc">for Inc</li>
 				</ul>
 			</div>
-			<br> <br> <input type="button" class="btn-3"
+			<br/><br/><br/> <br> <input type="button" class="btn-3"
 				name="submitbutton" id="submitbutton" value="Compile and Run Code" />
 			<input type="submit" class="btn-3" value="Save Class" /> <input
 				type="hidden" name="cls" value="${cls}" />

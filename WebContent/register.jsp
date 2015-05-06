@@ -73,7 +73,7 @@
 		</div>
 	</div>
 	<div id="footer">TouchJDE - 2015 Developed @ UTA</div>
-	//Register page handler
+	<!-- Register page handler -->
 	<script type="text/javascript">
 		$(function() {
 			//the form wrapper (includes all forms)

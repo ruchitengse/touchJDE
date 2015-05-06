@@ -63,16 +63,23 @@ h3, h4, h5 {
 	font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
 	background: #3089AD;
 	margin: 0px;
+	color: #FFF;
 	padding: 4px;
 	font-size: 14px;
+	cursor: pointer;
 }
 
 .btn-4 {
 	background: #ED2F3D;
 	margin: 0px;
-	padding: 1px;
-	font-size: 12px;
+	padding: 8px;
+	font-size: 14px;
 	display: inline;
+	cursor: pointer;
+}
+
+.btn-4:hover {
+	background: #DBAEB1;
 }
 
 input[type=text] {
@@ -85,11 +92,13 @@ input[type=text] {
 	font-size: x-large;
 	color: #207ce5;
 	height: 30px;
+	margin: 10px;
 }
 
 #content {
 	height: auto;
 	font-size: large;
+	margin: 10px;
 }
 
 #footer {
@@ -99,6 +108,20 @@ input[type=text] {
 	font-size: small;
 	text-align: center;
 	display: block;
+}
+
+.listProjs {
+	margin: 10px;
+	font-size: medium;
+}
+
+.listProjs ul {
+	list-style-type: none;
+}
+
+.listProjs li {
+	font-family: cursive;
+	font-weight: bold;
 }
 
 a {
@@ -163,7 +186,6 @@ a {
 
 .alpBtn {
 	padding: .2em 1em;
-	font-size: 1em;
 	position: relative;
 	float: right;
 }
@@ -171,6 +193,7 @@ a {
 #chrDiv {
 	color: Green;
 	position: fixed;
+	overflow-y: scroll; 
 	padding: 11px 10px 0px 15px;
 	background-color: rgba(212, 228, 239, 1);
 	/* border: 1px solid #333; */
@@ -265,10 +288,20 @@ a {
 	font: normal normal bold 20px "Courier New", Courier, monospace;
 }
 
-#projName, #projNameLabel, #projSelect, #pkgName, #pkgNameLabel, #pkgSelect {
+#projName, #projNameLabel, #projSelect, #pkgName, #pkgNameLabel,
+	#pkgSelect {
 	display: none;
 }
 
 #projects, #packages, #classes {
 	font-size: medium;
+}
+
+select {
+	font-size: 15px;
+	padding: 3px;
+}
+
+option {
+	height: 5px;
 }

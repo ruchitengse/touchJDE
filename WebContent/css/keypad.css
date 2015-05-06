@@ -12,7 +12,7 @@ body {
 }
 
 #container {
-	margin: 100px auto;
+	margin: 75px auto;
 	width: 850px;
 }
 
@@ -20,7 +20,7 @@ body {
 	margin: 0 0 5px;
 	padding: 5px;
 	width: 671px;
-	height: 200px;
+	height: 325px;
 	font: 1.2em/1.5 Verdana, Sans-Serif;
 	background: #fff;
 	border: 1px solid #f9f9f9;
@@ -92,7 +92,7 @@ body {
 	display: none;
 }
 
-.sym {
+.symbol, .sym{
 	display: none;
 }
 
@@ -144,7 +144,7 @@ body {
 	display: none;
 }
 
-#keyboard .conds1, #keyboard .conds2, #keyboard .syso, #keyboard .comm {
+#keyboard .conds1, #keyboard .conds2, #keyboard .syso, #keyboard .comm, #keyboard .numsyms, #swiDefault {
 	width: 70px;
 }
 

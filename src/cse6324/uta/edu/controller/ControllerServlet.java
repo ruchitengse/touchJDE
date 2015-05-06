@@ -71,17 +71,6 @@ public class ControllerServlet extends HttpServlet {
 	private void doGetSaveAction(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		/*String saveClsName = request.getParameter("classname");
-		saveClsName = saveClsName.replaceAll("<CARRIAGERETURN>", "\r");
-		saveClsName = saveClsName.replaceAll("<NEWLINE>", "\n");
-		saveClsName = saveClsName.replaceAll("<TAB>", "\t");
-		System.out.println(saveClsName);
-		request.setAttribute("created", saveClsName);
-		request.getRequestDispatcher("openedclass.jsp").forward(request,
-				response);
-		System.out.println("open: " + request.getAttribute("created"));*/
-		
-		// TODO Auto-generated method stub
 			String classId = request.getParameter("classId");
 			String classData = DbConnection.getClassData(classId);
 			classData = classData.replaceAll("<CARRIAGERETURN>", "\r");
@@ -129,13 +118,13 @@ public class ControllerServlet extends HttpServlet {
 			request.getSession().setAttribute(
 					"create",
 					"package " + pkgName + ";\n" + "public class " + clsName
-							+ " {");
+							+ " {\n");
 			request.getSession().setAttribute("packageName", pkgName);
 		} else if (pkgSelect != null) {
 			request.getSession().setAttribute(
 					"create",
 					"package " + pkgSelect + ";\n" + "public class " + clsName
-							+ " {");
+							+ " {\n");
 			request.getSession().setAttribute("packageName", pkgSelect);
 		}
 

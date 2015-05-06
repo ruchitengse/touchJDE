@@ -86,11 +86,13 @@ p {
 }
 
 a.back {
-	color: #777;
+	color: #535376;
 	position: fixed;
 	top: 5px;
 	right: 10px;
+	font-size: medium;
 	text-decoration: none;
+	font-weight: bold;
 }
 /* Form Style */
 .form_wrapper {

@@ -18,70 +18,85 @@
 <link rel="stylesheet" type="text/css" href="css/login_reg_style.css">
 <body>
 	<div id="header">
-		touch<b>JDE</b>
+		<p>
+			<a href="index.jsp">touch<b>JDE</b></a>
+		</p>
 		<hr>
-	</div><br/>
-	<form method="POST" name="openclass" id="openclass">
-		<label>Select Project:</label><select name="projects" id="projects">
+	</div>
+	<br />
+	<div id="content">
+		<p>
+			Hey <b><%=username%></b>, This is your current workspace on
+			TouchJDE!
+		</p>
+		<br />
+		<form method="POST" name="openclass" id="openclass">
+			<label>Select Project:</label>&nbsp;&nbsp;<select name="projects"
+				id="projects">
+				<%
+					String projectId = request.getParameter("projects");
+						String packageId = request.getParameter("packages");
+						Map<Integer, String> userProjectsMap = DbConnection.getData(username, "getprojects");
+						for(Integer Id: userProjectsMap.keySet()){
+							if(projectId != null && Id.equals(Integer.parseInt(projectId))){
+				%>
+				<option value=<%=Id%> selected><%=userProjectsMap.get(Id)%></option>
+				<%
+					} else {
+				%>
+				<option value=<%=Id%>><%=userProjectsMap.get(Id)%></option>
+				<%
+					}
+						}
+				%>
+			</select> <br />
+			<input type="submit" class="btn btn-4" name="getpackages"
+				id="getpackages" value="Get Packages" /><br />
+			<br />
 			<%
-				String projectId = request.getParameter("projects");
-				String packageId = request.getParameter("packages");
-				Map<Integer, String> userProjectsMap = DbConnection.getData(username, "getprojects");
-				for(Integer Id: userProjectsMap.keySet()){
-					if(projectId != null && Id.equals(Integer.parseInt(projectId))){
+				if(request.getParameter("getpackages") != null){
+				Map<Integer, String> projectPackageMap = DbConnection.getData(projectId, "getpackages");
 			%>
-			<option value=<%=Id%> selected><%=userProjectsMap.get(Id)%></option>
-			<%
-				} else {
-			%>
-			<option value=<%=Id%>><%=userProjectsMap.get(Id)%></option>
+			<label>Select Package:</label><select name="packages" id="packages">
+				<%
+					for(Integer Id: projectPackageMap.keySet()){	
+						if(projectId != null && Id.equals(Integer.parseInt(projectId))){
+				%>
+				<option value=<%=Id%> selected><%=projectPackageMap.get(Id)%></option>
+				<%
+					} else {
+				%>
+				<option value=<%=Id%>><%=projectPackageMap.get(Id)%></option>
+				<%
+					} 
+						}
+				%>
+			</select><br /> <input type="submit" class="btn btn-4" name="getclasses"
+				id="getclasses" value="Get Classes" /><br />
+			<br />
 			<%
 				}
-				}
 			%>
-		</select> <input type="submit" class="btn btn-4" name="getpackages" id="getpackages"
-			value="Get Packages" /><br/><br/>
-		<%
-			if(request.getParameter("getpackages") != null){
-			Map<Integer, String> projectPackageMap = DbConnection.getData(projectId, "getpackages");
-		%>
-		<label>Select Package:</label><select name="packages" id="packages">
 			<%
-				for(Integer Id: projectPackageMap.keySet()){	
-				if(projectId != null && Id.equals(Integer.parseInt(projectId))){
+				if(request.getParameter("getclasses") != null) { 
+				Map<String, String> classesMap = DbConnection.getData(packageId, "getclasses");
 			%>
-			<option value=<%=Id%> selected><%=projectPackageMap.get(Id)%></option>
-			<%
-				} else {
-			%>
-			<option value=<%=Id%>><%=projectPackageMap.get(Id)%></option>
-			<%
-				} 
-				}
-			%>
-		</select> <input type="submit" class="btn btn-4" name="getclasses" id="getclasses"
-			value="Get Classes" /><br/><br/>
-		<%
-			}
-		%>
-		<%
-			if(request.getParameter("getclasses") != null) { 
-			Map<String, String> classesMap = DbConnection.getData(packageId, "getclasses");
-		%>
-		<label>Select Class:</label><select name="classname" id="classes">
-			<%
-				for(String classId: classesMap.keySet()){
-			%>
-			<option value="<%=classId%>"><%=classesMap.get(classId)%></option>
+			<label>Select Class:</label><select name="classname" id="classes">
+				<%
+					for(String classId: classesMap.keySet()){
+				%>
+				<option value="<%=classId%>"><%=classesMap.get(classId)%></option>
+				<%
+					}
+				%>
+			</select> <br /> <input type="button" class="btn btn-4" value="Open Class"
+				onclick="openclassinnewpage()" />
 			<%
 				}
 			%>
-		</select> <input type="button" class="btn btn-4" value="Open Class"
-			onclick="openclassinnewpage()" />
-		<%
-			}
-		%>
-	</form>
+		</form>
+		<a class="back" href="/touchJDE/logout.action">Logout <%=username%></a>
+	</div>
 </body>
 <script type="text/javascript">
 	function openclassinnewpage() {

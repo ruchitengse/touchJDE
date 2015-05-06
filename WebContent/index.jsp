@@ -11,9 +11,10 @@
 <head>
 <%
 	String user = (String) session.getAttribute("username");
-	if(user == null || user.equals(0)){
-		request.getRequestDispatcher("login.jsp").forward(request, response);
-}
+	if (user == null || user.equals(0)) {
+		request.getRequestDispatcher("login.jsp").forward(request,
+				response);
+	}
 %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>TouchJDE</title>
@@ -41,6 +42,10 @@
 	</div>
 	<div id="content">
 		<br />
+		<p>
+			Hello
+			<%=user%>!
+		</p>
 		<p>This is a web-based IDE for JAVA which helps the beginners to
 			develop and understand simple classes</p>
 		<!-- <button class="btn btn-1" style="width: 120px"
@@ -54,10 +59,10 @@
 		<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
 			url="<%=server%>" user="<%=username%>" password="<%=password%>" />
 		<sql:query dataSource="${snapshot}" var="resultProj">
-			SELECT * from jde_projects;
+			SELECT * from jde_projects where user_name="<%=user%>";
 		</sql:query>
 		<sql:query dataSource="${snapshot}" var="resultPkg">
-			SELECT * from jde_packages;
+			SELECT * from jde_packages where user_name="<%=user%>";
 		</sql:query>
 		<div id="openModal" class="modalDialog">
 			<div>
@@ -67,31 +72,32 @@
 					<br />
 					<button class="btn-2" id="newProj">Create new project</button>
 					<button class="btn-2" id="oldProj">Add to existing project</button>
-					<h3>
-						<span id="projNameLabel"><label>Enter Project Name:</label><br /></span>
-					</h3>
+					<h2 style="padding: 0px">
+						<span style="color: #2F1041" id="projNameLabel"><label>Enter Project Name:</label></span>
+					</h2>
 					<input type="text" size="30" id="projName" name="projName" /> <br />
 					<select id="projSelect" name="projSelect">
 						<c:forEach var="row" items="${resultProj.rows}">
 							<option value="${row.proj_name}">${row.proj_name}</option>
 						</c:forEach>
 					</select><br />
-					<button class="btn-2" id="newPkg">Create new Package</button>
-					<button class="btn-2" id="oldPkg">Add to existing Package</button>
-					<h3>
-						<span id="pkgNameLabel"><label>Enter Package Name:</label><br />
-							<h5>(Example: com.package.example)</h5></span>
-					</h3>
+					<button class="btn-2" id="newPkg" style="margin-top: 10px;">Create new Package</button>
+					<button class="btn-2" id="oldPkg" style="margin-top: 10px;">Add to existing Package</button>
+					<h2 style="padding: 0px">
+						<span style="color: #2F1041" id="pkgNameLabel"><label>Enter Package Name:</label>
+							<h5 style="color: #2F1041">(Example: com.package.example)</h5></span>
+					</h2>
+					
 					<input type="text" size="30" id="pkgName" name="pkgName" /><br />
 					<select id="pkgSelect" name="pkgSelect">
 						<c:forEach var="row" items="${resultPkg.rows}">
 							<option value="${row.pkg_name}">${row.pkg_name}</option>
 						</c:forEach>
 					</select><br />
-					<h3>
-						<label>Enter Class Name:</label>
-					</h3>
-					<h5>(Example: TestClassExample)</h5>
+					<h2 style="padding: 0px">
+						<span style="color: #2F1041"><label>Enter Class Name:</label></span>
+					</h2>
+					<h5 style="color: #2F1041">(Example: TestClassExample)</h5>
 					<input type="text" id="clsName" size="50" name="clsName" required
 						pattern="^[A-Z]([a-z]*[A-Z]?[A-Za-z]*)"
 						title="Enter correct format" /><br /> <br /> <input
@@ -99,6 +105,15 @@
 				</form>
 			</div>
 		</div>
+	</div>
+	<div class="listProjs">
+		<p>These are the projects in your workspace that you have been
+			working on recently</p>
+			<ul>
+			<c:forEach var="row" items="${resultProj.rows}">
+							<li>${row.proj_name}</li>
+						</c:forEach>
+			</ul>
 	</div>
 	<div id="footer">TouchJDE - 2015 Developed @ UTA</div>
 	<a class="back" href="/touchJDE/logout.action">Logout <%=user%></a>
