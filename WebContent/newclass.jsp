@@ -39,7 +39,7 @@
 	<%
 		String projectName = (String) request.getSession().getAttribute("projectName");
 		String packageName = (String) request.getSession().getAttribute("packageName");
-		String className = (String) request.getSession().getAttribute("clsName");
+		String className = (String) request.getSession().getAttribute("cls");
 		String user = (String) request.getSession().getAttribute("username");
 	%>
 	<center>

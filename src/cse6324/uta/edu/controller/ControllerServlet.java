@@ -71,7 +71,7 @@ public class ControllerServlet extends HttpServlet {
 	private void doGetSaveAction(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String saveClsName = request.getParameter("classname");
+		/*String saveClsName = request.getParameter("classname");
 		saveClsName = saveClsName.replaceAll("<CARRIAGERETURN>", "\r");
 		saveClsName = saveClsName.replaceAll("<NEWLINE>", "\n");
 		saveClsName = saveClsName.replaceAll("<TAB>", "\t");
@@ -79,8 +79,18 @@ public class ControllerServlet extends HttpServlet {
 		request.setAttribute("created", saveClsName);
 		request.getRequestDispatcher("openedclass.jsp").forward(request,
 				response);
-		System.out.println("open: " + request.getAttribute("created"));
-	}
+		System.out.println("open: " + request.getAttribute("created"));*/
+		
+		// TODO Auto-generated method stub
+			String classId = request.getParameter("classId");
+			String classData = DbConnection.getClassData(classId);
+			classData = classData.replaceAll("<CARRIAGERETURN>", "\r");
+			classData = classData.replaceAll("<NEWLINE>", "\n");
+			classData = classData.replaceAll("<TAB>", "\t");
+			request.getSession().setAttribute("created", classData);
+			request.getRequestDispatcher("openedclass.jsp").forward(request,
+					response);
+		}
 
 	// Save class from web page to database
 	private void doPostInsertAction(HttpServletRequest request,
@@ -89,7 +99,6 @@ public class ControllerServlet extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		String username = (String) session.getAttribute("username");
 		String classData = request.getParameter("create");
-		//String username = request.getParameter("username");
 		String projectName = request.getParameter("projectName");
 		String className = request.getParameter("className");
 		String packageName = request.getParameter("packageName");
@@ -97,16 +106,8 @@ public class ControllerServlet extends HttpServlet {
 		classData = classData.replaceAll("\n", "<NEWLINE>");
 		classData = classData.replaceAll("\t", "<TAB>");
 		String cls = request.getParameter("cls");
-		System.out.println("insert classData: " + classData);
-		System.out.println("insert cls: " + cls);
-		System.out.println("insert username: " + username);
-		System.out.println("insert clsName: " + className);
-		System.out.println("insert projName: " + projectName);
-		System.out.println("insert pkgName: " + packageName);
-		// DbConnection db = new DbConnection();
 		DbConnection.insertProject(username, projectName, packageName,
 				className, classData);
-		// DbConnection.insert(cls, insertCls);
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
@@ -120,11 +121,6 @@ public class ControllerServlet extends HttpServlet {
 		String projSelect = request.getParameter("projSelect");
 		String pkgName = request.getParameter("pkgName");
 		String pkgSelect = request.getParameter("pkgSelect");
-		
-		//System.out.println("create username: " + username);
-		System.out.println("create clsName: " + clsName);
-		System.out.println("create projName: " + projName);
-		System.out.println("create pkgName: " + pkgName);
 		System.out
 				.println(clsName + "|pkgname: " + pkgName + "|pkgS: "
 						+ pkgSelect + "|projNam: " + projName + "|projS: "
@@ -148,7 +144,7 @@ public class ControllerServlet extends HttpServlet {
 		} else if (projSelect != null) {
 			request.getSession().setAttribute("projectName", projSelect);
 		}
-		request.setAttribute("cls", clsName);
+		request.getSession().setAttribute("cls", clsName);
 		request.getRequestDispatcher("newclass.jsp").forward(request, response);
 		System.out.println("create: " + request.getAttribute("create"));
 		// out.print("Here");

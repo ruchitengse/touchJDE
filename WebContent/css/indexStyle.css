@@ -60,10 +60,19 @@ h3, h4, h5 {
 }
 
 .btn-2 {
+	font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
 	background: #3089AD;
 	margin: 0px;
 	padding: 4px;
 	font-size: 14px;
+}
+
+.btn-4 {
+	background: #ED2F3D;
+	margin: 0px;
+	padding: 1px;
+	font-size: 12px;
+	display: inline;
 }
 
 input[type=text] {
@@ -258,4 +267,8 @@ a {
 
 #projName, #projNameLabel, #projSelect, #pkgName, #pkgNameLabel, #pkgSelect {
 	display: none;
+}
+
+#projects, #packages, #classes {
+	font-size: medium;
 }
